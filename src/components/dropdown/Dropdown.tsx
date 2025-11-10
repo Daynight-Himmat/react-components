@@ -189,9 +189,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
             ) : (
               <View style={styles.item}>
                 <SvgButton
-                  size={12}
                   icon={multiSelectIcon}
-                  iconColor={'white'}
                   onPress={() => onCheckPress(item)}
                   style={[
                     styles.checkContainer,

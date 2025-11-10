@@ -6,7 +6,7 @@ import { ChipInterface } from '../../interface/ChipInterface';
 
 const Chip = (props: ChipInterface) => {
   const { styles } = useChipStyle({ ...props });
-  const { label, onClearPress, chipColor, textColor } = props;
+  const { label, onClearPress, textColor, clearIcon } = props;
   return (
     <View style={styles.box}>
       <AppText
@@ -19,11 +19,9 @@ const Chip = (props: ChipInterface) => {
       </AppText>
       <View style={styles.clearContainer}>
         <SvgButton
-          size={6}
-          icon={'clearIcon'}
-          style={styles.clearIcon}
-          iconColor={chipColor ? chipColor : 'gray'}
+          icon={clearIcon}
           onPress={onClearPress}
+          style={styles.clearIcon}
         />
       </View>
     </View>
