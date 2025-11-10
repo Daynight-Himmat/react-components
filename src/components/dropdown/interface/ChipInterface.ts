@@ -5,4 +5,5 @@ export interface ChipInterface {
   onClearPress?: () => void;
   chipColor?: keyof ThemeColors;
   textColor?: keyof ThemeColors;
+  clearIcon?: React.JSX.Element;
 }

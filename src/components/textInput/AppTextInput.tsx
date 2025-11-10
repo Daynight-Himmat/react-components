@@ -6,9 +6,7 @@ import {
   ViewStyle,
   TextInputProps,
 } from 'react-native';
-import svg from '../../assets/svg';
 import AppText from '../text/AppText';
-import SvgIcon from '../../assets/svg';
 import SvgButton from '../svgButton/SvgButton';
 import React, { useCallback, useState } from 'react';
 import { useAppTextInputStyle } from './AppTextInputStyle';
@@ -87,10 +85,8 @@ const AppTextInput = ({
       onPress?: () => void,
     ) => (
       <SvgButton
-        size={18}
         icon={rightIcon}
         onPress={onPress}
-        iconColor={'gray'}
         style={[styles.rightIcon, rightIconStyle]}
       />
     ),
@@ -113,9 +109,7 @@ const AppTextInput = ({
         >
           {leftIcon ? (
             <SvgButton
-              size={18}
               icon={leftIcon}
-              iconColor={'gray'}
               style={[styles.leftIcon, leftIconStyle]}
             />
           ) : null}
