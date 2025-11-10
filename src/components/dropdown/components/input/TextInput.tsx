@@ -10,6 +10,7 @@ const TextInputComponent: CTextInput = props => {
     placeholder = '',
     placeholderTextColor = '#000',
     onChangeText = (_value: string) => {},
+    searchIcon,
   } = props;
 
   const [searchtext, setSearchText] = useState<string>('');
@@ -31,7 +32,7 @@ const TextInputComponent: CTextInput = props => {
       <AppTextInput
         {...props}
         value={searchtext}
-        icon={'searchIcon'}
+        icon={searchIcon}
         style={styles.input}
         onChangeText={onChange}
         placeholder={placeholder}

@@ -17,14 +17,14 @@ export interface AppTextProps extends TextInputProps {
   label?: string;
   inputRef?: any;
   required?: boolean;
+  icon?: React.JSX.Element;
   error?: string | undefined;
+  leftIcon?: React.JSX.Element;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   labelStyle?: StyleProp<TextStyle>;
   leftIconStyle?: StyleProp<ViewStyle>;
   rightIconStyle?: StyleProp<ViewStyle>;
-  icon?: keyof typeof SvgIcon | React.JSX.Element;
-  leftIcon?: keyof typeof SvgIcon | React.JSX.Element;
   onIconPress?: () => Promise<void> | undefined | void;
   type?: 'password' | 'number' | 'email' | 'phone' | 'text';
   autoCapitalize?: 'characters' | 'words' | 'sentences' | 'none';
@@ -81,11 +81,9 @@ const AppTextInput = ({
     }
   };
 
-  const SvgPassword = secureTextEntry ? 'eyeOnIcon' : 'eyeOffIcon';
-
   const renderIcon = useCallback(
     (
-      rightIcon?: keyof typeof svg | React.JSX.Element,
+      rightIcon?: React.JSX.Element,
       onPress?: () => void,
     ) => (
       <SvgButton
@@ -143,7 +141,7 @@ const AppTextInput = ({
             {...rest}
           />
           {type === 'password'
-            ? renderIcon(SvgPassword, handlePasswordIcon)
+            ? renderIcon(icon, handlePasswordIcon)
             : null}
           {icon && type !== 'password' ? renderIcon(icon, onIconPress) : null}
         </View>
