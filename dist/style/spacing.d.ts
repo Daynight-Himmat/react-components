@@ -1,0 +1,23 @@
+export declare const SPACING: {
+    none: number;
+    s1: number;
+    s2: number;
+    s3: number;
+    s4: number;
+    s6: number;
+    s8: number;
+    s10: number;
+    s12: number;
+    s14: number;
+    s16: number;
+    s18: number;
+    s20: number;
+    s22: number;
+    s24: number;
+    s30: number;
+    s36: number;
+    s40: number;
+    s45: number;
+    s48: number;
+    s50: number;
+};
