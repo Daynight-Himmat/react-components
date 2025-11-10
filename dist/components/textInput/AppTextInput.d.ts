@@ -1,18 +1,17 @@
 import { StyleProp, TextStyle, ViewStyle, TextInputProps } from 'react-native';
-import SvgIcon from '../../assets/svg';
 import React from 'react';
 export interface AppTextProps extends TextInputProps {
     label?: string;
     inputRef?: any;
     required?: boolean;
+    icon?: React.JSX.Element;
     error?: string | undefined;
+    leftIcon?: React.JSX.Element;
     style?: StyleProp<ViewStyle>;
     textStyle?: StyleProp<TextStyle>;
     labelStyle?: StyleProp<TextStyle>;
     leftIconStyle?: StyleProp<ViewStyle>;
     rightIconStyle?: StyleProp<ViewStyle>;
-    icon?: keyof typeof SvgIcon | React.JSX.Element;
-    leftIcon?: keyof typeof SvgIcon | React.JSX.Element;
     onIconPress?: () => Promise<void> | undefined | void;
     type?: 'password' | 'number' | 'email' | 'phone' | 'text';
     autoCapitalize?: 'characters' | 'words' | 'sentences' | 'none';

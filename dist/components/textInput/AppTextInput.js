@@ -63,8 +63,7 @@ const AppTextInput = ({ icon, type, error, label, style, value, onBlur, onFocus,
                 return 'default';
         }
     };
-    const SvgPassword = secureTextEntry ? 'eyeOnIcon' : 'eyeOffIcon';
-    const renderIcon = (0, react_1.useCallback)((rightIcon, onPress) => (<SvgButton_1.default size={18} icon={rightIcon} onPress={onPress} iconColor={'gray'} style={[styles.rightIcon, rightIconStyle]}/>), [styles, rightIconStyle]);
+    const renderIcon = (0, react_1.useCallback)((rightIcon, onPress) => (<SvgButton_1.default icon={rightIcon} onPress={onPress} style={[styles.rightIcon, rightIconStyle]}/>), [styles, rightIconStyle]);
     return (<>
       {label ? (<AppText_1.default style={[styles.label, labelStyle]}>
           {label}
@@ -72,14 +71,14 @@ const AppTextInput = ({ icon, type, error, label, style, value, onBlur, onFocus,
         </AppText_1.default>) : null}
       <react_native_1.View style={styles.margin}>
         <react_native_1.View style={[styles.container, style, error ? styles.errorWrapper : {}]}>
-          {leftIcon ? (<SvgButton_1.default size={18} icon={leftIcon} iconColor={'gray'} style={[styles.leftIcon, leftIconStyle]}/>) : null}
+          {leftIcon ? (<SvgButton_1.default icon={leftIcon} style={[styles.leftIcon, leftIconStyle]}/>) : null}
           <react_native_1.TextInput value={value} ref={inputRef} onBlur={onBlur} onPressIn={onPressIn} allowFontScaling={false} placeholder={placeholder} autoCorrect={autoCorrect} onChangeText={onChangeText} keyboardType={getKeyboardType()} textContentType={textContentType} secureTextEntry={secureTextEntry} style={[styles.textInputStyles, textStyle]} placeholderTextColor={placeholderTextColor || colors.gray} onFocus={e => {
             if (onFocus) {
                 onFocus(e);
             }
         }} {...rest}/>
           {type === 'password'
-            ? renderIcon(SvgPassword, handlePasswordIcon)
+            ? renderIcon(icon, handlePasswordIcon)
             : null}
           {icon && type !== 'password' ? renderIcon(icon, onIconPress) : null}
         </react_native_1.View>

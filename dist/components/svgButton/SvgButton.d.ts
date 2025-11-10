@@ -1,15 +1,11 @@
 import React from 'react';
-import Svg from '../../assets/svg';
-import { ThemeColors } from '../../interface/colors.interface';
 import { StyleProp, ViewStyle, PressableProps } from 'react-native';
 interface Props {
-    size?: number;
     isFab?: boolean;
     onPress?: () => void;
+    icon?: React.JSX.Element;
     style?: StyleProp<ViewStyle>;
-    iconColor?: keyof ThemeColors;
     pressableProps?: PressableProps;
-    icon?: keyof typeof Svg | React.JSX.Element;
 }
-declare const SvgButton: React.MemoExoticComponent<({ icon, style, onPress, size, isFab, pressableProps, iconColor, }: Props) => React.JSX.Element>;
+declare const SvgButton: React.MemoExoticComponent<({ icon, style, onPress, isFab, pressableProps, }: Props) => React.JSX.Element>;
 export default SvgButton;

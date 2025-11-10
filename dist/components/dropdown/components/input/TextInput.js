@@ -41,7 +41,7 @@ const react_1 = __importStar(require("react"));
 const react_native_1 = require("react-native");
 const AppTextInput_1 = __importDefault(require("../../../textInput/AppTextInput"));
 const TextInputComponent = props => {
-    const { value, placeholder = '', placeholderTextColor = '#000', onChangeText = (_value) => { }, } = props;
+    const { value, placeholder = '', placeholderTextColor = '#000', onChangeText = (_value) => { }, searchIcon, } = props;
     const [searchtext, setSearchText] = (0, react_1.useState)('');
     const { styles } = (0, TextInputStyle_1.useTextStyle)();
     (0, react_1.useEffect)(() => {
@@ -54,7 +54,7 @@ const TextInputComponent = props => {
         onChangeText(text);
     };
     return (<react_native_1.TouchableWithoutFeedback>
-      <AppTextInput_1.default {...props} value={searchtext} icon={'searchIcon'} style={styles.input} onChangeText={onChange} placeholder={placeholder} textStyle={styles.inputContainer} placeholderTextColor={placeholderTextColor}/>
+      <AppTextInput_1.default {...props} value={searchtext} icon={searchIcon} style={styles.input} onChangeText={onChange} placeholder={placeholder} textStyle={styles.inputContainer} placeholderTextColor={placeholderTextColor}/>
     </react_native_1.TouchableWithoutFeedback>);
 };
 exports.default = TextInputComponent;

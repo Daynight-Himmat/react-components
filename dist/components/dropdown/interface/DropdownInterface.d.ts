@@ -7,7 +7,6 @@ export type IDropdownRef = {
 };
 export type SelectionType = 'single' | 'multi';
 export type DropdownProps<S, T extends SelectionType> = {
-    ref?: React.RefObject<IDropdownRef> | null | undefined;
     data: S[];
     testID?: string;
     search?: boolean;
@@ -34,7 +33,9 @@ export type DropdownProps<S, T extends SelectionType> = {
     confirmSelectItem?: boolean;
     accessibilityLabel?: string;
     style?: StyleProp<ViewStyle>;
+    subfixIcon?: React.JSX.Element;
     onClear?: (id?: number) => void;
+    multiSelectIcon?: React.JSX.Element;
     checkIconColor?: keyof ThemeColors;
     radioIconColor?: keyof ThemeColors;
     onChange?: (selecteValue?: keyof S, selectedList?: SelectionType extends 'single' | 'multi' ? S[] : S) => void;
@@ -55,6 +56,7 @@ export type DropdownProps<S, T extends SelectionType> = {
     selectedTextStyle?: StyleProp<TextStyle>;
     itemContainerStyle?: StyleProp<ViewStyle>;
     dropdownPosition?: 'auto' | 'top' | 'bottom';
+    ref?: React.RefObject<IDropdownRef> | null | undefined;
     searchQuery?: (keyword: string, labelValue: string) => boolean;
     flatListProps?: Omit<FlatListProps<any>, 'renderItem' | 'data'>;
     renderRightIcon?: (visible?: boolean) => React.JSX.Element | null | undefined;
