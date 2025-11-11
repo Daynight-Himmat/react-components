@@ -75,7 +75,7 @@ const DropdownComponent = (props) => {
             </AppText_1.default>) : (<react_native_1.View style={styles.showMultiSelectContainer}>
               <react_native_1.ScrollView showsVerticalScrollIndicator={false}>
                 <react_native_1.View style={styles.wraps}>
-                  {currentValue?.map?.((i) => (<Chip_1.default label={i.name} chipColor={'red'} textColor={'white'} key={i?.[valueField]} onClearPress={() => onClearPress(i)}/>))}
+                  {currentValue?.map?.((i) => (<Chip_1.default chipColor={'red'} textColor={'white'} key={i?.[valueField]} label={i?.[labelField]} onClearPress={() => onClearPress(i)}/>))}
                 </react_native_1.View>
               </react_native_1.ScrollView>
             </react_native_1.View>)}
