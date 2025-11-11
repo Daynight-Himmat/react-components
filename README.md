@@ -1,118 +1,146 @@
 # @rn-components-dropdown/dropdown
 
-A lightweight and customizable dropdown component for React Native. Includes a flexible `Dropdown` component and a simple `AppText` component.
+A lightweight, customizable, and fully typed **Dropdown** and **DropdownController** component for **React Native**.  
+Supports **single** & **multiple selection**, custom icons, styling, and easy integration with **React Hook Form**.
 
 ---
 
-## 🚀 Installation
+## 📦 Installation
 
-Install the package using npm or yarn:
+### Install Package
 
 ```bash
 npm install @rn-components-dropdown/dropdown
 ```
 
-or
+### React Hook Form (optional — required only for DropdownController)
 
 ```bash
-yarn add @rn-components-dropdown/dropdown
+npm install react-hook-form
 ```
 
 ---
 
-## 📦 Importing Components
+## ✨ Components Provided
 
-```js
-import { Dropdown, AppText } from '@rn-components-dropdown/dropdown';
-```
+This package includes two components:
+
+### 🔹 Dropdown  
+A standalone dropdown with:
+- Single or multi selection  
+- Custom icons  
+- Full styling customization  
+- Works independently  
+
+### 🔹 DropdownController  
+A wrapper designed for **React Hook Form**, handling form values automatically.
 
 ---
 
-## 🧩 Usage Example
+# 🔽 Dropdown Usage
 
-```jsx
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import { Dropdown, AppText } from '@rn-components-dropdown/dropdown';
+```tsx
+import { Dropdown } from "@rn-components-dropdown/dropdown";
 
-export default function App() {
-  const [value, setValue] = useState(null);
-
-  const data = [
-    { label: 'Apple', value: 1 },
-    { label: 'Banana', value: 2 },
-    { label: 'Mango', value: 3 },
-  ];
-
+export default function MyScreen() {
   return (
-    <View style={{ padding: 20 }}>
-      <AppText>Choose a fruit:</AppText>
-
-      <Dropdown
-        data={data}
-        labelField="label"
-        valueField="value"
-        value={value}
-        onChange={(item) => setValue(item.value)}
-        placeholder="Select item"
-      />
-    </View>
+    <Dropdown
+      data={[
+        { id: 1, label: "Apple" },
+        { id: 2, label: "Banana" },
+      ]}
+      labelField="label"
+      valueField="id"
+      placeholder="Select fruit"
+    />
   );
 }
 ```
 
 ---
 
-## 🛠️ Dropdown Props
+# 🔧 Dropdown Props
 
-| Prop            | Type       | Default         | Description                                           |
-| --------------- | ---------- | --------------- | ----------------------------------------------------- |
-| `data`          | `array`    | `[]`            | The list of options for the dropdown.                 |
-| `labelField`    | `string`   | `'label'`       | The key in each data object for displaying the label. |
-| `valueField`    | `string`   | `'value'`       | The key used as the selected value.                   |
-| `value`         | `any`      | `null`          | The selected value.                                   |
-| `placeholder`   | `string`   | `'Select item'` | Placeholder text.                                     |
-| `onChange`      | `function` | `() => {}`      | Callback when a value is selected.                    |
-| `style`         | `object`   | `{}`            | Custom style for the dropdown container.              |
-| `textStyle`     | `object`   | `{}`            | Custom style for the selected text.                   |
-| `dropdownStyle` | `object`   | `{}`            | Style for the dropdown list.                          |
-
----
-
-## ✨ Features
-
-* Fully customizable dropdown UI
-* Simple API
-* Works with any React Native project
-* Includes reusable `AppText` component
+| Prop              | Type                    | Description                                      |
+|-------------------|-------------------------|--------------------------------------------------|
+| data              | Array<any>             | List of dropdown items                           |
+| labelField        | string                 | Key used for item label                           |
+| valueField        | string                 | Key used for item value                           |
+| value             | any                    | Current selected item/value                       |
+| placeholder       | string                 | Placeholder text                                  |
+| multiple          | boolean                | Enable multi-select                               |
+| onChange          | (item) => void         | Callback when value changes                       |
+| disable           | boolean                | Disable the dropdown                              |
+| renderIcon        | () => JSX.Element      | Custom icon renderer                              |
+| style             | ViewStyle              | Wrapper container style                           |
+| selectedStyle     | ViewStyle              | Style for selected value display                  |
+| dropdownStyle     | ViewStyle              | Dropdown list container style                     |
+| placeholderStyle  | TextStyle              | Style for placeholder text                        |
+| itemStyle         | ViewStyle              | Style for each dropdown item                      |
+| ...others         | any                    | Additional props                                  |
 
 ---
 
-## 📄 AppText Component
+# 🎯 DropdownController (React Hook Form Support)
 
-A simple wrapper around the standard `Text` component.
+A form-friendly dropdown that automatically:
+- updates values  
+- handles errors  
+- applies validation rules  
 
-### Usage
+---
 
-```jsx
-<AppText style={{ fontSize: 18 }}>Hello World</AppText>
+## 📘 Usage with React Hook Form
+
+```tsx
+import { useForm } from "react-hook-form";
+import { DropdownController } from "@rn-components-dropdown/dropdown";
+
+export default function FormScreen() {
+  const { control } = useForm();
+
+  return (
+    <DropdownController
+      control={control}
+      name="fruit"
+      rules={{ required: "Please select a fruit" }}
+      dropProps={{
+        data: [
+          { id: 1, label: "Apple" },
+          { id: 2, label: "Banana" },
+        ],
+        labelField: "label",
+        valueField: "id",
+        placeholder: "Pick a fruit",
+      }}
+    />
+  );
+}
 ```
 
-### Props
+---
 
-| Prop       | Type     | Description    |                        |
-| ---------- | -------- | -------------- | ---------------------- |
-| `children` | `string  | ReactNode`     | Text content to render |
-| `style`    | `object` | Custom styling |                        |
+## 🧩 DropdownController Props
+
+| Prop          | Type        | Description                                   |
+|---------------|-------------|-----------------------------------------------|
+| control       | Control     | React Hook Form control object                |
+| name          | string      | Field name in the form                        |
+| rules         | object      | Validation rules (optional)                   |
+| dropProps     | object      | All dropdown props                             |
+| defaultValue  | any         | Initial/default value                          |
 
 ---
 
-## 📚 Contributing
+## 📝 Notes
 
-Pull requests are welcome! If you want to improve the package, create an issue or PR.
+- Works on **iOS** and **Android**
+- Supports **custom icons**, SVG or any JSX via `renderIcon`
+- Fully customizable styles
+- TypeScript supported
 
 ---
 
-## 🪪 License
+## 📄 License
 
-MIT © 2025 @rn-components-dropdown
+MIT
