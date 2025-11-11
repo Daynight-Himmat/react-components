@@ -138,10 +138,10 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
                 <View style={styles.wraps}>
                   {currentValue?.map?.((i: any) => (
                     <Chip
-                      label={i.name}
                       chipColor={'red'}
                       textColor={'white'}
                       key={i?.[valueField]}
+                      label={i?.[labelField]}
                       onClearPress={() => onClearPress(i)}
                     />
                   ))}
