@@ -53,7 +53,7 @@ const DropdownComponent = (props) => {
     const { styles, colors } = (0, DropdownStyle_1.useDropdownStyle)({});
     const { ref, font, visible, refList, position, onSelect, listData, onSearch, onMeasure, searchText, showOrClose, scrollIndex, currentValue, onCheckPress, onClearPress, setSearchText, keyboardHeight, } = (0, useDropdown_1.default)({ ...props });
     const renderRight = () => {
-        return renderRightIcon ? (renderRightIcon(visible)) : (<SvgButton_1.default icon={subfixIcon ? subfixIcon : visible ? <svg_1.ArrowDown color={iconColor}/> : <svg_1.ArrowUp color={iconColor}/>} onPress={showOrClose} style={react_native_1.StyleSheet.flatten([
+        return renderRightIcon ? (renderRightIcon(visible)) : (<SvgButton_1.default icon={subfixIcon ? subfixIcon : visible ? <svg_1.ArrowUp color={iconColor}/> : <svg_1.ArrowDown color={iconColor}/>} onPress={showOrClose} style={react_native_1.StyleSheet.flatten([
                 iconStyle,
                 styles.icon,
                 { tintColor: iconColor },

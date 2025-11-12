@@ -92,7 +92,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
       renderRightIcon(visible)
     ) : (
       <SvgButton
-        icon={subfixIcon ? subfixIcon : visible ? <ArrowDown color={iconColor} />  : <ArrowUp color={iconColor} />}
+        icon={subfixIcon ? subfixIcon : visible ?  <ArrowUp color={iconColor} /> : <ArrowDown color={iconColor} />}
         onPress={showOrClose}
         style={StyleSheet.flatten([
           iconStyle,

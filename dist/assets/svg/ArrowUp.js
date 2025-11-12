@@ -38,7 +38,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const react_native_svg_1 = __importStar(require("react-native-svg"));
-const ArrowUp = ({ size = 24, color = "#1C1B1F" }) => (<react_native_svg_1.default width={size} height={size} viewBox="0 0 24 24" fill="none">
+const ArrowUp = ({ size = 16, color = "#1C1B1F" }) => (<react_native_svg_1.default width={size} height={size} viewBox="0 0 24 24" fill="none">
     <react_native_svg_1.Mask id="mask0_2375_2500" maskUnits="userSpaceOnUse" x={0} y={0} width={24} height={24}>
       <react_native_svg_1.Rect x={24} y={24} width={24} height={24} rx={1} transform="rotate(-180 24 24)" fill={color}/>
     </react_native_svg_1.Mask>

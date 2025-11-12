@@ -2,7 +2,7 @@ import React from "react";
 import Svg, { Mask, Rect, G, Path } from "react-native-svg";
 import { SvgInterface } from "../../interface/svg.interface";
 
-const ArrowUp = ({ size = 24, color = "#1C1B1F" }: SvgInterface) => (
+const ArrowUp = ({ size = 16, color = "#1C1B1F" }: SvgInterface) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
     <Mask
       id="mask0_2375_2500"

@@ -1,7 +1,7 @@
 import React from "react";
 import Svg, { Path, Mask, Rect, G } from "react-native-svg";
 
-const ArrowDown = ({ size = 24, color = "black" }) => (
+const ArrowDown = ({ size = 16, color = "black" }) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
     <Mask
       id="mask0_2371_2505"
