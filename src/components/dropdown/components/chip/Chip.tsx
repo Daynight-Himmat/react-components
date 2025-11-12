@@ -1,6 +1,7 @@
 import { View } from 'react-native';
 import useChipStyle from './ChipStyle';
 import AppText from '../../../text/AppText';
+import { ClearIcon } from '../../../../assets/svg';
 import SvgButton from '../../../svgButton/SvgButton';
 import { ChipInterface } from '../../interface/ChipInterface';
 
@@ -19,7 +20,7 @@ const Chip = (props: ChipInterface) => {
       </AppText>
       <View style={styles.clearContainer}>
         <SvgButton
-          icon={clearIcon}
+          icon={clearIcon ? clearIcon : <ClearIcon color={textColor}/> } 
           onPress={onClearPress}
           style={styles.clearIcon}
         />

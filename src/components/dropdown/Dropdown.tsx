@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback } from 'react';
 import {
   View,
   Modal,
@@ -13,11 +12,14 @@ import {
 import _ from 'lodash';
 import AppText from '../text/AppText';
 import Chip from './components/chip/Chip';
+import React, { useCallback } from 'react';
 import useDropdown from './hooks/useDropdown';
 import SvgButton from '../svgButton/SvgButton';
 import { useDropdownStyle } from './DropdownStyle';
+import { ArrowDown, ArrowUp } from '../../assets/svg';
 import SearchInput from './components/input/TextInput';
 import { DropdownProps } from './interface/DropdownInterface';
+import CheckIcon from '../../assets/svg/CheckIcon';
 
 const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
   props: DropdownProps<T, Mode>,
@@ -90,7 +92,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
       renderRightIcon(visible)
     ) : (
       <SvgButton
-        icon={subfixIcon}
+        icon={subfixIcon ? subfixIcon : visible ? <ArrowDown color={iconColor} />  : <ArrowUp color={iconColor} />}
         onPress={showOrClose}
         style={StyleSheet.flatten([
           iconStyle,
@@ -189,7 +191,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
             ) : (
               <View style={styles.item}>
                 <SvgButton
-                  icon={multiSelectIcon}
+                  icon={multiSelectIcon ? multiSelectIcon : <CheckIcon color={colors.white}/> }
                   onPress={() => onCheckPress(item)}
                   style={[
                     styles.checkContainer,
@@ -303,10 +305,10 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
             value={searchText}
             autoCorrect={false}
             testID={testID + ' input'}
-            placeholder={searchPlaceholder}
             placeholderTextColor={colors.black}
             style={[styles.input, inputSearchStyle]}
             accessibilityLabel={accessibilityLabel + ' input'}
+            placeholder={searchPlaceholder || 'Write here for search...'}
             onChangeText={(e: any) => {
               if (onChangeText) {
                 setSearchText(e);

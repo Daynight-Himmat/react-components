@@ -37,21 +37,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable react-hooks/exhaustive-deps */
-const react_1 = __importStar(require("react"));
 const react_native_1 = require("react-native");
 const lodash_1 = __importDefault(require("lodash"));
 const AppText_1 = __importDefault(require("../text/AppText"));
 const Chip_1 = __importDefault(require("./components/chip/Chip"));
+const react_1 = __importStar(require("react"));
 const useDropdown_1 = __importDefault(require("./hooks/useDropdown"));
 const SvgButton_1 = __importDefault(require("../svgButton/SvgButton"));
 const DropdownStyle_1 = require("./DropdownStyle");
+const svg_1 = require("../../assets/svg");
 const TextInput_1 = __importDefault(require("./components/input/TextInput"));
+const CheckIcon_1 = __importDefault(require("../../assets/svg/CheckIcon"));
 const DropdownComponent = (props) => {
     const { label, testID, iconStyle, renderItem, style = {}, subfixIcon, labelField, valueField, onChangeText, itemTextStyle, flatListProps, minHeight = 0, containerStyle, search = false, renderLeftIcon, multiSelectIcon, itemTestIDField, maxHeight = 300, inverted = true, renderRightIcon, backgroundColor, placeholderStyle, inputSearchStyle, searchPlaceholder, selectedTextStyle, renderInputSearch, iconColor = 'gray', accessibilityLabel, itemContainerStyle, labelContainer = {}, labelTextStyle = {}, selectedTextProps = {}, selectionType = 'single', activeColor = 'lightGray', keyboardAvoiding = true, dropdownPosition = 'auto', placeholder = 'Select item', itemAccessibilityLabelField, showsVerticalScrollIndicator = true, } = props;
     const { styles, colors } = (0, DropdownStyle_1.useDropdownStyle)({});
     const { ref, font, visible, refList, position, onSelect, listData, onSearch, onMeasure, searchText, showOrClose, scrollIndex, currentValue, onCheckPress, onClearPress, setSearchText, keyboardHeight, } = (0, useDropdown_1.default)({ ...props });
     const renderRight = () => {
-        return renderRightIcon ? (renderRightIcon(visible)) : (<SvgButton_1.default icon={subfixIcon} onPress={showOrClose} style={react_native_1.StyleSheet.flatten([
+        return renderRightIcon ? (renderRightIcon(visible)) : (<SvgButton_1.default icon={subfixIcon ? subfixIcon : visible ? <svg_1.ArrowDown color={iconColor}/> : <svg_1.ArrowUp color={iconColor}/>} onPress={showOrClose} style={react_native_1.StyleSheet.flatten([
                 iconStyle,
                 styles.icon,
                 { tintColor: iconColor },
@@ -93,7 +95,7 @@ const DropdownComponent = (props) => {
         return (<react_native_1.TouchableHighlight key={index.toString()} testID={lodash_1.default.get(item, itemTestIDField || labelField)} accessible={!!accessibilityLabel} accessibilityLabel={lodash_1.default.get(item, itemAccessibilityLabelField || labelField)} underlayColor={colors[activeColor]} onPress={() => onCheckPress(item)}>
           <react_native_1.View style={react_native_1.StyleSheet.flatten([itemContainerStyle])}>
             {renderItem ? (renderItem(item, isSelected)) : (<react_native_1.View style={styles.item}>
-                <SvgButton_1.default icon={multiSelectIcon} onPress={() => onCheckPress(item)} style={[
+                <SvgButton_1.default icon={multiSelectIcon ? multiSelectIcon : <CheckIcon_1.default color={colors.white}/>} onPress={() => onCheckPress(item)} style={[
                     styles.checkContainer,
                     {
                         backgroundColor: isSelected ? colors.gray : colors.white,
@@ -171,7 +173,7 @@ const DropdownComponent = (props) => {
                 });
             }
             else {
-                return (<TextInput_1.default value={searchText} autoCorrect={false} testID={testID + ' input'} placeholder={searchPlaceholder} placeholderTextColor={colors.black} style={[styles.input, inputSearchStyle]} accessibilityLabel={accessibilityLabel + ' input'} onChangeText={(e) => {
+                return (<TextInput_1.default value={searchText} autoCorrect={false} testID={testID + ' input'} placeholderTextColor={colors.black} style={[styles.input, inputSearchStyle]} accessibilityLabel={accessibilityLabel + ' input'} placeholder={searchPlaceholder || 'Write here for search...'} onChangeText={(e) => {
                         if (onChangeText) {
                             setSearchText(e);
                             onChangeText(e);

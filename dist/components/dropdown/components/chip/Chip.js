@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_native_1 = require("react-native");
 const ChipStyle_1 = __importDefault(require("./ChipStyle"));
 const AppText_1 = __importDefault(require("../../../text/AppText"));
+const svg_1 = require("../../../../assets/svg");
 const SvgButton_1 = __importDefault(require("../../../svgButton/SvgButton"));
 const Chip = (props) => {
     const { styles } = (0, ChipStyle_1.default)({ ...props });
@@ -15,7 +16,7 @@ const Chip = (props) => {
         {label}
       </AppText_1.default>
       <react_native_1.View style={styles.clearContainer}>
-        <SvgButton_1.default icon={clearIcon} onPress={onClearPress} style={styles.clearIcon}/>
+        <SvgButton_1.default icon={clearIcon ? clearIcon : <svg_1.ClearIcon color={textColor}/>} onPress={onClearPress} style={styles.clearIcon}/>
       </react_native_1.View>
     </react_native_1.View>);
 };

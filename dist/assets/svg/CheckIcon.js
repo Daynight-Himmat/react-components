@@ -32,30 +32,9 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const TextInputStyle_1 = require("./TextInputStyle");
-const react_1 = __importStar(require("react"));
-const svg_1 = require("../../../../assets/svg");
-const react_native_1 = require("react-native");
-const AppTextInput_1 = __importDefault(require("../../../textInput/AppTextInput"));
-const TextInputComponent = props => {
-    const { value, placeholder = '', placeholderTextColor = '#000', onChangeText = (_value) => { }, searchIcon, } = props;
-    const [searchtext, setSearchText] = (0, react_1.useState)('');
-    const { styles } = (0, TextInputStyle_1.useTextStyle)();
-    (0, react_1.useEffect)(() => {
-        if (value) {
-            setSearchText(value);
-        }
-    }, [value]);
-    const onChange = (text) => {
-        setSearchText(text);
-        onChangeText(text);
-    };
-    return (<react_native_1.TouchableWithoutFeedback>
-      <AppTextInput_1.default {...props} value={searchtext} style={styles.input} onChangeText={onChange} placeholder={placeholder} textStyle={styles.inputContainer} placeholderTextColor={placeholderTextColor} icon={searchIcon ? searchIcon : <svg_1.SearchIcon />}/>
-    </react_native_1.TouchableWithoutFeedback>);
-};
-exports.default = TextInputComponent;
+const react_native_svg_1 = __importStar(require("react-native-svg"));
+const CheckIcon = ({ size, color }) => (<react_native_svg_1.default width={size} height={size} viewBox="0 0 17 12" fill={color}>
+    <react_native_svg_1.Path d="M7.27431 11.4818C6.88907 11.8992 6.23401 11.9123 5.8324 11.5106L0.292433 5.97067C-0.104655 5.57358 -0.0969935 4.92745 0.309397 4.53989L0.9927 3.88825C1.38569 3.51347 2.00596 3.52082 2.38995 3.90481L5.3544 6.86927C5.70921 7.22407 6.27201 7.261 6.67014 6.95561L15.5294 0.160008C15.8378 -0.0765669 16.2738 -0.0479552 16.5487 0.226898C16.84 0.518236 16.8523 0.986646 16.5767 1.29289L12.5684 5.7466L7.27431 11.4818Z"/>
+  </react_native_svg_1.default>);
+exports.default = CheckIcon;

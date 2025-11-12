@@ -59,8 +59,8 @@ export type DropdownProps<S, T extends SelectionType> = {
     ref?: React.RefObject<IDropdownRef> | null | undefined;
     searchQuery?: (keyword: string, labelValue: string) => boolean;
     flatListProps?: Omit<FlatListProps<any>, 'renderItem' | 'data'>;
-    renderRightIcon?: (visible?: boolean) => React.JSX.Element | null | undefined;
     renderLeftIcon?: (visible?: boolean) => React.JSX.Element | null | undefined;
+    renderRightIcon?: (visible?: boolean) => React.JSX.Element | null | undefined;
     renderItem?: (item: S, selected?: boolean) => React.JSX.Element | null | undefined;
     renderInputSearch?: (onSearch: (text: string) => void) => React.JSX.Element | null | undefined;
 };
