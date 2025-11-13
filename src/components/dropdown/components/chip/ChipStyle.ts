@@ -4,7 +4,7 @@ import { Platform, StyleSheet } from 'react-native';
 import { ChipInterface } from '../../interface/ChipInterface';
 
 const useChipStyle = (props: ChipInterface) => {
-  const { chipColor } = props;
+  const { chipColor, textColor } = props;
   const { ...colors } = LIGHT_COLORS;
   const styles = useMemo(() => {
     return StyleSheet.create({
@@ -17,7 +17,7 @@ const useChipStyle = (props: ChipInterface) => {
           },
           ios: {
             shadowRadius: 1.84,
-            shadowOpacity: 0.25,
+            shadowOpacity: 0.35,
             shadowColor: colors.black,
             shadowOffset: { width: 0, height: 2 },
           },
@@ -37,23 +37,23 @@ const useChipStyle = (props: ChipInterface) => {
       clearContainer: {
         width: 18,
         height: 18,
-        borderWidth: 1,
+        borderWidth: 2,
         borderRadius: 100,
         marginHorizontal: 4,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: colors.white,
+        borderColor: textColor ? colors[textColor] : colors.white,
         backgroundColor: chipColor ? colors[chipColor] : colors.lightGray,
       },
       clearIcon: {
-        height: 12,
         width: 12,
+        height: 12,
         borderRadius: 100,
         alignItems: 'center',
         justifyContent: 'center',
       },
     });
-  }, [chipColor, colors]);
+  }, [chipColor, colors, textColor]);
   return {
     styles,
     colors,

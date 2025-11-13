@@ -59,8 +59,8 @@ declare const useChipStyle: (props: ChipInterface) => {
             backgroundColor: string;
         };
         clearIcon: {
-            height: number;
             width: number;
+            height: number;
             borderRadius: number;
             alignItems: "center";
             justifyContent: "center";

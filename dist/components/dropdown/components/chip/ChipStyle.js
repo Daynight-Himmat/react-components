@@ -4,7 +4,7 @@ const react_1 = require("react");
 const style_1 = require("../../../../style");
 const react_native_1 = require("react-native");
 const useChipStyle = (props) => {
-    const { chipColor } = props;
+    const { chipColor, textColor } = props;
     const { ...colors } = style_1.LIGHT_COLORS;
     const styles = (0, react_1.useMemo)(() => {
         return react_native_1.StyleSheet.create({
@@ -17,7 +17,7 @@ const useChipStyle = (props) => {
                     },
                     ios: {
                         shadowRadius: 1.84,
-                        shadowOpacity: 0.25,
+                        shadowOpacity: 0.35,
                         shadowColor: colors.black,
                         shadowOffset: { width: 0, height: 2 },
                     },
@@ -37,23 +37,23 @@ const useChipStyle = (props) => {
             clearContainer: {
                 width: 18,
                 height: 18,
-                borderWidth: 1,
+                borderWidth: 2,
                 borderRadius: 100,
                 marginHorizontal: 4,
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderColor: colors.white,
+                borderColor: textColor ? colors[textColor] : colors.white,
                 backgroundColor: chipColor ? colors[chipColor] : colors.lightGray,
             },
             clearIcon: {
-                height: 12,
                 width: 12,
+                height: 12,
                 borderRadius: 100,
                 alignItems: 'center',
                 justifyContent: 'center',
             },
         });
-    }, [chipColor, colors]);
+    }, [chipColor, colors, textColor]);
     return {
         styles,
         colors,

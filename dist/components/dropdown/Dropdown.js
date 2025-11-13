@@ -54,7 +54,7 @@ const DropdownComponent = (props) => {
     const { styles, colors } = (0, DropdownStyle_1.useDropdownStyle)({});
     const { ref, font, visible, refList, position, onSelect, listData, onSearch, onMeasure, searchText, showOrClose, scrollIndex, currentValue, onCheckPress, onClearPress, setSearchText, keyboardHeight, } = (0, useDropdown_1.default)({ ...props });
     const renderRight = () => {
-        return renderRightIcon ? (renderRightIcon(visible)) : (<SvgButton_1.default icon={subfixIcon ? subfixIcon : visible ? <svg_1.ArrowUp color={iconColor}/> : <svg_1.ArrowDown color={iconColor}/>} onPress={showOrClose} style={react_native_1.StyleSheet.flatten([
+        return renderRightIcon ? (renderRightIcon(visible)) : (<SvgButton_1.default icon={subfixIcon ? (subfixIcon) : visible ? (<svg_1.ArrowUp color={iconColor}/>) : (<svg_1.ArrowDown color={iconColor}/>)} onPress={showOrClose} style={react_native_1.StyleSheet.flatten([
                 iconStyle,
                 styles.icon,
                 { tintColor: iconColor },
@@ -95,11 +95,11 @@ const DropdownComponent = (props) => {
         </react_native_1.View>);
     }, [styles]);
     const renderCheckItem = (0, react_1.useCallback)(({ item, index }) => {
-        const isSelected = lodash_1.default.some(currentValue, h => lodash_1.default.isEqual(lodash_1.default.get(h, valueField), lodash_1.default.get(item, valueField)));
+        const isSelected = lodash_1.default.some(currentValue, (h) => lodash_1.default.isEqual(lodash_1.default.get(h, valueField), lodash_1.default.get(item, valueField)));
         return (<react_native_1.TouchableHighlight key={index.toString()} testID={lodash_1.default.get(item, itemTestIDField || labelField)} accessible={!!accessibilityLabel} accessibilityLabel={lodash_1.default.get(item, itemAccessibilityLabelField || labelField)} underlayColor={colors[activeColor]} onPress={() => onCheckPress(item)}>
           <react_native_1.View style={react_native_1.StyleSheet.flatten([itemContainerStyle])}>
             {renderItem ? (renderItem(item, isSelected, labelField, valueField)) : (<react_native_1.View style={styles.item}>
-                <SvgButton_1.default icon={multiSelectIcon ? multiSelectIcon : <CheckIcon_1.default color={colors.white}/>} onPress={() => onCheckPress(item)} style={[
+                <SvgButton_1.default icon={multiSelectIcon ? (multiSelectIcon) : (<CheckIcon_1.default color={colors.white}/>)} onPress={() => onCheckPress(item)} style={[
                     styles.checkContainer,
                     {
                         backgroundColor: isSelected ? colors.gray : colors.white,

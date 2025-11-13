@@ -48,11 +48,11 @@ export type DropdownProps<S, T extends SelectionType> = {
   subfixIcon?: React.JSX.Element;
   onClear?: (id?: number) => void;
   activeColor?: keyof ThemeColors;
-  chipContainerProps: ChipInterface;
   iconStyle?: StyleProp<ImageStyle>;
-  multiSelectIcon?:React.JSX.Element;
+  chipContainerProps: ChipInterface;
   checkIconColor?: keyof ThemeColors;
   radioIconColor?: keyof ThemeColors;
+  multiSelectIcon?: React.JSX.Element;
   mode?: 'default' | 'modal' | 'auto';
   itemTextStyle?: StyleProp<TextStyle>;
   itemAccessibilityLabelField?: string;

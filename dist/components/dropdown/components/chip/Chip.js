@@ -15,9 +15,9 @@ const Chip = (props) => {
       <AppText_1.default size={12} fontFamily={'semiBold'} style={styles.chipText} color={textColor ? textColor : 'gray'}>
         {label}
       </AppText_1.default>
-      {clearIcon ? clearIcon : <react_native_1.View style={styles.clearContainer}>
-        <SvgButton_1.default icon={<svg_1.ClearIcon size={14} color={textColor || colors.white}/>} onPress={onClearPress} style={styles.clearIcon}/>
-      </react_native_1.View>}
+      {clearIcon ? (clearIcon) : (<react_native_1.View style={styles.clearContainer}>
+          <SvgButton_1.default icon={<svg_1.ClearIcon size={8} color={textColor ? colors[textColor] : colors.white}/>} onPress={onClearPress} style={styles.clearIcon}/>
+        </react_native_1.View>)}
     </react_native_1.View>);
 };
 exports.default = Chip;

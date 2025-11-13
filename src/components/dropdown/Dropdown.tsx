@@ -100,7 +100,15 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
       renderRightIcon(visible)
     ) : (
       <SvgButton
-        icon={subfixIcon ? subfixIcon : visible ?  <ArrowUp color={iconColor} /> : <ArrowDown color={iconColor} />}
+        icon={
+          subfixIcon ? (
+            subfixIcon
+          ) : visible ? (
+            <ArrowUp color={iconColor} />
+          ) : (
+            <ArrowDown color={iconColor} />
+          )
+        }
         onPress={showOrClose}
         style={StyleSheet.flatten([
           iconStyle,
@@ -182,7 +190,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
 
   const renderCheckItem = useCallback(
     ({ item, index }: { item: T; index: number }) => {
-      const isSelected = _.some(currentValue, h =>
+      const isSelected = _.some(currentValue, (h: any) =>
         _.isEqual(_.get(h, valueField), _.get(item, valueField)),
       );
       return (
@@ -200,10 +208,16 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
           <View style={StyleSheet.flatten([itemContainerStyle])}>
             {renderItem ? (
               renderItem(item, isSelected, labelField, valueField)
-            )  : (
+            ) : (
               <View style={styles.item}>
                 <SvgButton
-                  icon={multiSelectIcon ? multiSelectIcon : <CheckIcon color={colors.white}/> }
+                  icon={
+                    multiSelectIcon ? (
+                      multiSelectIcon
+                    ) : (
+                      <CheckIcon color={colors.white} />
+                    )
+                  }
                   onPress={() => onCheckPress(item)}
                   style={[
                     styles.checkContainer,
