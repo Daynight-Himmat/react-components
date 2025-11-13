@@ -49,7 +49,7 @@ export type DropdownProps<S, T extends SelectionType> = {
   onClear?: (id?: number) => void;
   activeColor?: keyof ThemeColors;
   iconStyle?: StyleProp<ImageStyle>;
-  chipContainerProps: ChipInterface;
+  chipContainerProps?: ChipInterface;
   checkIconColor?: keyof ThemeColors;
   radioIconColor?: keyof ThemeColors;
   multiSelectIcon?: React.JSX.Element;
