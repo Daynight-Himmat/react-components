@@ -18,13 +18,13 @@ const Chip = (props: ChipInterface) => {
       >
         {label}
       </AppText>
-      <View style={styles.clearContainer}>
+      {clearIcon ? clearIcon : <View style={styles.clearContainer}>
         <SvgButton
-          icon={clearIcon ? clearIcon : <ClearIcon color={textColor || colors.white}/> } 
+          icon={<ClearIcon size={14} color={textColor || colors.white}/> } 
           onPress={onClearPress}
           style={styles.clearIcon}
         />
-      </View>
+      </View>}
     </View>
   );
 };

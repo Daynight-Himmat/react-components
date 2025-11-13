@@ -16,10 +16,10 @@ import React, { useCallback } from 'react';
 import useDropdown from './hooks/useDropdown';
 import SvgButton from '../svgButton/SvgButton';
 import { useDropdownStyle } from './DropdownStyle';
+import CheckIcon from '../../assets/svg/CheckIcon';
 import { ArrowDown, ArrowUp } from '../../assets/svg';
 import SearchInput from './components/input/TextInput';
 import { DropdownProps } from './interface/DropdownInterface';
-import CheckIcon from '../../assets/svg/CheckIcon';
 
 const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
   props: DropdownProps<T, Mode>,
@@ -51,6 +51,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
     searchPlaceholder,
     selectedTextStyle,
     renderInputSearch,
+    chipContainerProps,
     iconColor = 'gray',
     accessibilityLabel,
     itemContainerStyle,
@@ -65,6 +66,13 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
     itemAccessibilityLabelField,
     showsVerticalScrollIndicator = true,
   } = props;
+
+  const {
+    chipColor,
+    clearIcon,
+    textColor,
+    onClearPress: onClear,
+  } = chipContainerProps;
 
   const { styles, colors } = useDropdownStyle({});
   const {
@@ -140,11 +148,15 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
                 <View style={styles.wraps}>
                   {currentValue?.map?.((i: any) => (
                     <Chip
-                      chipColor={'red'}
-                      textColor={'white'}
+                      chipColor={chipColor || 'red'}
+                      textColor={textColor || 'white'}
+                      clearIcon={clearIcon}
                       key={i?.[valueField]}
                       label={i?.[labelField]}
-                      onClearPress={() => onClearPress(i)}
+                      onClearPress={() => {
+                        onClear?.();
+                        onClearPress?.(i);
+                      }}
                     />
                   ))}
                 </View>
@@ -370,9 +382,9 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
       );
     },
     [
-      inverted,
       styles,
       testID,
+      inverted,
       listData,
       scrollIndex,
       renderSearch,
