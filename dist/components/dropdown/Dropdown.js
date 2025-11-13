@@ -94,7 +94,7 @@ const DropdownComponent = (props) => {
         const isSelected = lodash_1.default.some(currentValue, h => lodash_1.default.isEqual(lodash_1.default.get(h, valueField), lodash_1.default.get(item, valueField)));
         return (<react_native_1.TouchableHighlight key={index.toString()} testID={lodash_1.default.get(item, itemTestIDField || labelField)} accessible={!!accessibilityLabel} accessibilityLabel={lodash_1.default.get(item, itemAccessibilityLabelField || labelField)} underlayColor={colors[activeColor]} onPress={() => onCheckPress(item)}>
           <react_native_1.View style={react_native_1.StyleSheet.flatten([itemContainerStyle])}>
-            {renderItem ? (renderItem(item, isSelected)) : (<react_native_1.View style={styles.item}>
+            {renderItem ? (renderItem(item, isSelected, labelField, valueField)) : (<react_native_1.View style={styles.item}>
                 <SvgButton_1.default icon={multiSelectIcon ? multiSelectIcon : <CheckIcon_1.default color={colors.white}/>} onPress={() => onCheckPress(item)} style={[
                     styles.checkContainer,
                     {
@@ -132,7 +132,7 @@ const DropdownComponent = (props) => {
         lodash_1.default.assign(item, { _index: index });
         return (<react_native_1.TouchableHighlight key={index.toString()} testID={lodash_1.default.get(item, itemTestIDField || labelField)} accessible={!!accessibilityLabel} accessibilityLabel={lodash_1.default.get(item, itemAccessibilityLabelField || labelField)} underlayColor={colors[activeColor]} onPress={() => onSelect(item)}>
           <react_native_1.View style={react_native_1.StyleSheet.flatten([itemContainerStyle])}>
-            {renderItem ? (renderItem(item, selected)) : (<react_native_1.View style={styles.item}>
+            {renderItem ? (renderItem(item, selected, labelField, valueField)) : (<react_native_1.View style={styles.item}>
                 {renderRadio(selected)}
                 <AppText_1.default style={react_native_1.StyleSheet.flatten([
                     styles.textItem,

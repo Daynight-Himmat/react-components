@@ -61,7 +61,7 @@ export type DropdownProps<S, T extends SelectionType> = {
     flatListProps?: Omit<FlatListProps<any>, 'renderItem' | 'data'>;
     renderLeftIcon?: (visible?: boolean) => React.JSX.Element | null | undefined;
     renderRightIcon?: (visible?: boolean) => React.JSX.Element | null | undefined;
-    renderItem?: (item: S, selected?: boolean) => React.JSX.Element | null | undefined;
+    renderItem?: (item: S, selected?: boolean, labelField?: keyof S, valueField?: keyof S) => React.JSX.Element | null | undefined;
     renderInputSearch?: (onSearch: (text: string) => void) => React.JSX.Element | null | undefined;
 };
 export interface IUseDetectDevice {

@@ -12,7 +12,7 @@ declare const useDropdown: <T, Mode extends "single" | "multi">(props: DropdownP
     position: any;
     onSelect: (item: any) => void;
     onSearch: (text: string) => void;
-    listData: any[];
+    listData: T[];
     onMeasure: () => void;
     searchText: string;
     showOrClose: () => void;
