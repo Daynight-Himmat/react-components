@@ -45,11 +45,12 @@ const react_1 = __importStar(require("react"));
 const useDropdown_1 = __importDefault(require("./hooks/useDropdown"));
 const SvgButton_1 = __importDefault(require("../svgButton/SvgButton"));
 const DropdownStyle_1 = require("./DropdownStyle");
+const CheckIcon_1 = __importDefault(require("../../assets/svg/CheckIcon"));
 const svg_1 = require("../../assets/svg");
 const TextInput_1 = __importDefault(require("./components/input/TextInput"));
-const CheckIcon_1 = __importDefault(require("../../assets/svg/CheckIcon"));
 const DropdownComponent = (props) => {
-    const { label, testID, iconStyle, renderItem, style = {}, subfixIcon, labelField, valueField, onChangeText, itemTextStyle, flatListProps, minHeight = 0, containerStyle, search = false, renderLeftIcon, multiSelectIcon, itemTestIDField, maxHeight = 300, inverted = true, renderRightIcon, backgroundColor, placeholderStyle, inputSearchStyle, searchPlaceholder, selectedTextStyle, renderInputSearch, iconColor = 'gray', accessibilityLabel, itemContainerStyle, labelContainer = {}, labelTextStyle = {}, selectedTextProps = {}, selectionType = 'single', activeColor = 'lightGray', keyboardAvoiding = true, dropdownPosition = 'auto', placeholder = 'Select item', itemAccessibilityLabelField, showsVerticalScrollIndicator = true, } = props;
+    const { label, testID, iconStyle, renderItem, style = {}, subfixIcon, labelField, valueField, onChangeText, itemTextStyle, flatListProps, minHeight = 0, containerStyle, search = false, renderLeftIcon, multiSelectIcon, itemTestIDField, maxHeight = 300, inverted = true, renderRightIcon, backgroundColor, placeholderStyle, inputSearchStyle, searchPlaceholder, selectedTextStyle, renderInputSearch, chipContainerProps, iconColor = 'gray', accessibilityLabel, itemContainerStyle, labelContainer = {}, labelTextStyle = {}, selectedTextProps = {}, selectionType = 'single', activeColor = 'lightGray', keyboardAvoiding = true, dropdownPosition = 'auto', placeholder = 'Select item', itemAccessibilityLabelField, showsVerticalScrollIndicator = true, } = props;
+    const { chipColor, clearIcon, textColor, onClearPress: onClear, } = chipContainerProps;
     const { styles, colors } = (0, DropdownStyle_1.useDropdownStyle)({});
     const { ref, font, visible, refList, position, onSelect, listData, onSearch, onMeasure, searchText, showOrClose, scrollIndex, currentValue, onCheckPress, onClearPress, setSearchText, keyboardHeight, } = (0, useDropdown_1.default)({ ...props });
     const renderRight = () => {
@@ -77,7 +78,10 @@ const DropdownComponent = (props) => {
             </AppText_1.default>) : (<react_native_1.View style={styles.showMultiSelectContainer}>
               <react_native_1.ScrollView showsVerticalScrollIndicator={false}>
                 <react_native_1.View style={styles.wraps}>
-                  {currentValue?.map?.((i) => (<Chip_1.default chipColor={'red'} textColor={'white'} key={i?.[valueField]} label={i?.[labelField]} onClearPress={() => onClearPress(i)}/>))}
+                  {currentValue?.map?.((i) => (<Chip_1.default chipColor={chipColor || 'red'} textColor={textColor || 'white'} clearIcon={clearIcon} key={i?.[valueField]} label={i?.[labelField]} onClearPress={() => {
+                        onClear?.();
+                        onClearPress?.(i);
+                    }}/>))}
                 </react_native_1.View>
               </react_native_1.ScrollView>
             </react_native_1.View>)}
@@ -209,9 +213,9 @@ const DropdownComponent = (props) => {
           </react_native_1.View>
         </react_native_1.TouchableWithoutFeedback>);
     }, [
-        inverted,
         styles,
         testID,
+        inverted,
         listData,
         scrollIndex,
         renderSearch,

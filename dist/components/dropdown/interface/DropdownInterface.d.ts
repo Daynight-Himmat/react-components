@@ -1,5 +1,6 @@
 import React from 'react';
 import type { StyleProp, TextStyle, ViewStyle, TextProps, ImageStyle, FlatListProps } from 'react-native';
+import { ChipInterface } from './ChipInterface';
 import { ThemeColors } from '../../../interface/colors.interface';
 export type IDropdownRef = {
     open: () => void;
@@ -33,15 +34,15 @@ export type DropdownProps<S, T extends SelectionType> = {
     confirmSelectItem?: boolean;
     accessibilityLabel?: string;
     style?: StyleProp<ViewStyle>;
+    selectedTextProps?: TextProps;
     subfixIcon?: React.JSX.Element;
     onClear?: (id?: number) => void;
+    activeColor?: keyof ThemeColors;
+    chipContainerProps: ChipInterface;
+    iconStyle?: StyleProp<ImageStyle>;
     multiSelectIcon?: React.JSX.Element;
     checkIconColor?: keyof ThemeColors;
     radioIconColor?: keyof ThemeColors;
-    onChange?: (selecteValue?: keyof S, selectedList?: SelectionType extends 'single' | 'multi' ? S[] : S) => void;
-    selectedTextProps?: TextProps;
-    activeColor?: keyof ThemeColors;
-    iconStyle?: StyleProp<ImageStyle>;
     mode?: 'default' | 'modal' | 'auto';
     itemTextStyle?: StyleProp<TextStyle>;
     itemAccessibilityLabelField?: string;
@@ -63,6 +64,7 @@ export type DropdownProps<S, T extends SelectionType> = {
     renderRightIcon?: (visible?: boolean) => React.JSX.Element | null | undefined;
     renderItem?: (item: S, selected?: boolean, labelField?: keyof S, valueField?: keyof S) => React.JSX.Element | null | undefined;
     renderInputSearch?: (onSearch: (text: string) => void) => React.JSX.Element | null | undefined;
+    onChange?: (selecteValue?: keyof S, selectedList?: SelectionType extends 'single' | 'multi' ? S[] : S) => void;
 };
 export interface IUseDetectDevice {
     isAndroid: boolean;
