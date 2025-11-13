@@ -104,7 +104,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
   };
 
   const _renderDropdown = () => {
-    const isSelected = currentValue && _.get(currentValue, valueField);
+    const isSelected: boolean = currentValue && _.get(currentValue, valueField);
     return (
       <TouchableWithoutFeedback
         testID={testID}
@@ -169,7 +169,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
   );
 
   const renderCheckItem = useCallback(
-    ({ item, index }: { item: any; index: number }) => {
+    ({ item, index }: { item: T; index: number }) => {
       const isSelected = _.some(currentValue, h =>
         _.isEqual(_.get(h, valueField), _.get(item, valueField)),
       );
@@ -187,8 +187,8 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
         >
           <View style={StyleSheet.flatten([itemContainerStyle])}>
             {renderItem ? (
-              renderItem(item, isSelected)
-            ) : (
+              renderItem(item, isSelected, labelField, valueField)
+            )  : (
               <View style={styles.item}>
                 <SvgButton
                   icon={multiSelectIcon ? multiSelectIcon : <CheckIcon color={colors.white}/> }
@@ -233,7 +233,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
   );
 
   const _renderItem = useCallback(
-    ({ item, index }: { item: any; index: number }) => {
+    ({ item, index }: { item: T; index: number }) => {
       const isSelected = currentValue && _.get(currentValue, valueField);
       const selected = _.isEqual(_.get(item, valueField), isSelected);
       _.assign(item, { _index: index });
@@ -251,7 +251,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
         >
           <View style={StyleSheet.flatten([itemContainerStyle])}>
             {renderItem ? (
-              renderItem(item, selected)
+              renderItem(item, selected, labelField, valueField)
             ) : (
               <View style={styles.item}>
                 {renderRadio(selected)}

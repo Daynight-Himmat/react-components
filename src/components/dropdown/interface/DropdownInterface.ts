@@ -77,6 +77,8 @@ export type DropdownProps<S, T extends SelectionType> = {
   renderItem?: (
     item: S,
     selected?: boolean,
+    labelField?: keyof S,
+    valueField?: keyof S,
   ) => React.JSX.Element | null | undefined;
   renderInputSearch?: (
     onSearch: (text: string) => void,

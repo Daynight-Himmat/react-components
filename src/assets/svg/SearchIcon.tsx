@@ -1,5 +1,5 @@
 import React from "react";
-import Svg, { Path, SvgProps } from "react-native-svg";
+import Svg, { Path } from "react-native-svg";
 import { SvgInterface } from "../../interface/svg.interface";
 
 const SearchIcon = ({  size= 18, color = "#1C1B1F" }: SvgInterface) => (
