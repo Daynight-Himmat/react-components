@@ -64,7 +64,6 @@ declare const useChipStyle: (props: ChipInterface) => {
             borderRadius: number;
             alignItems: "center";
             justifyContent: "center";
-            backgroundColor: string;
         };
     };
     colors: {

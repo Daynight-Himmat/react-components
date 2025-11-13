@@ -9,14 +9,14 @@ const AppText_1 = __importDefault(require("../../../text/AppText"));
 const svg_1 = require("../../../../assets/svg");
 const SvgButton_1 = __importDefault(require("../../../svgButton/SvgButton"));
 const Chip = (props) => {
-    const { styles } = (0, ChipStyle_1.default)({ ...props });
+    const { styles, colors } = (0, ChipStyle_1.default)({ ...props });
     const { label, onClearPress, textColor, clearIcon } = props;
     return (<react_native_1.View style={styles.box}>
       <AppText_1.default size={12} fontFamily={'semiBold'} style={styles.chipText} color={textColor ? textColor : 'gray'}>
         {label}
       </AppText_1.default>
       <react_native_1.View style={styles.clearContainer}>
-        <SvgButton_1.default icon={clearIcon ? clearIcon : <svg_1.ClearIcon color={textColor}/>} onPress={onClearPress} style={styles.clearIcon}/>
+        <SvgButton_1.default icon={clearIcon ? clearIcon : <svg_1.ClearIcon color={textColor || colors.white}/>} onPress={onClearPress} style={styles.clearIcon}/>
       </react_native_1.View>
     </react_native_1.View>);
 };

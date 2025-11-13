@@ -51,7 +51,6 @@ const useChipStyle = (props: ChipInterface) => {
         borderRadius: 100,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.white,
       },
     });
   }, [chipColor, colors]);
