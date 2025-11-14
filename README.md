@@ -4,6 +4,13 @@ A lightweight, customizable, and fully typed **Dropdown** and **DropdownControll
 Supports **single** & **multiple selection**, custom icons, styling, and easy integration with **React Hook Form**.
 
 ---
+# Example
+
+![Single Selection](./assets/images/single_select.png)
+![Multi Selection](./assets/images/multi_select.png)
+
+
+---
 
 ## 📦 Installation
 

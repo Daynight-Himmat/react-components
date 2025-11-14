@@ -18,7 +18,7 @@ const AppDropdownController = (props) => {
                     return onChange(selectedItem);
                 }
                 return onChange(selectValue);
-            }} labelField={labelField} valueField={valueField} placeholder={placeholder} containerStyle={containerStyle} labelTextStyle={styles.labelText} itemTextStyle={styles.dropdownText} placeholderStyle={styles.itemContainer} selectedTextStyle={styles.selectionText} style={[styles.dropdownContainer, error && styles.errorWrapper]} {...rest}/>
+            }} labelField={labelField} valueField={valueField} placeholder={placeholder} selectionType={selectionType} containerStyle={containerStyle} labelTextStyle={styles.labelText} itemTextStyle={styles.dropdownText} placeholderStyle={styles.itemContainer} selectedTextStyle={styles.selectionText} style={[styles.dropdownContainer, error && styles.errorWrapper]} {...rest}/>
           {error && <AppText_1.default style={styles.error}>{error?.message}</AppText_1.default>}
         </react_native_1.View>)}/>);
 };

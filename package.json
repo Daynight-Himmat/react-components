@@ -15,12 +15,14 @@
   },
   "keywords": [
     "react",
+    "dropdown",
     "react-native",
+    "rn-components",
     "react-components"
   ],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Himmat Suthar",
+  "license": "MIT",
+  "description": "Package use for dropdown for single and multi selection with radio and checkbox",
   "devDependencies": {
     "@types/lodash": "^4.17.20",
     "@types/react": "^19.2.2",

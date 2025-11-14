@@ -62,6 +62,7 @@ const AppDropdownController = <
             labelField={labelField}
             valueField={valueField}
             placeholder={placeholder}
+            selectionType={selectionType}
             containerStyle={containerStyle}
             labelTextStyle={styles.labelText}
             itemTextStyle={styles.dropdownText}
