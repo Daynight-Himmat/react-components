@@ -11,14 +11,14 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 import AppText from '../text/AppText';
-import Chip from './components/chip/Chip';
+import Chip from './component/chip/Chip';
 import React, { useCallback } from 'react';
 import useDropdown from './hooks/useDropdown';
 import SvgButton from '../svgButton/SvgButton';
 import { useDropdownStyle } from './DropdownStyle';
 import CheckIcon from '../../assets/svg/CheckIcon';
 import { ArrowDown, ArrowUp } from '../../assets/svg';
-import SearchInput from './components/input/TextInput';
+import SearchInput from './component/input/TextInput';
 import { DropdownProps } from './interface/DropdownInterface';
 
 const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
