@@ -6,6 +6,7 @@ import type {
   TextProps,
   ImageStyle,
   FlatListProps,
+  ColorValue,
 } from 'react-native';
 import { ChipInterface } from './ChipInterface';
 
@@ -23,7 +24,6 @@ export type DropdownProps<S, T extends SelectionType> = {
   disable?: boolean;
   selectionType?: T;
   maxHeight?: number;
-  iconColor?: string;
   minHeight?: number;
   inverted?: boolean;
   fontFamily?: string;
@@ -33,18 +33,19 @@ export type DropdownProps<S, T extends SelectionType> = {
   placeholder?: string;
   onFocus?: () => void;
   autoScroll?: boolean;
-  activeColor?: string;
   searchField?: keyof S;
+  iconColor?: ColorValue;
   value?: S[] | undefined;
-  checkIconColor?: string;
-  radioIconColor?: string;
+  activeColor?: ColorValue;
   itemTestIDField?: string;
-  backgroundColor?: string;
   keyboardAvoiding?: boolean;
   searchPlaceholder?: string;
   label?: string | undefined;
+  checkIconColor?: ColorValue;
+  radioIconColor?: ColorValue;
   confirmSelectItem?: boolean;
   accessibilityLabel?: string;
+  backgroundColor?: ColorValue;
   style?: StyleProp<ViewStyle>;
   selectedTextProps?: TextProps;
   subfixIcon?: React.JSX.Element;

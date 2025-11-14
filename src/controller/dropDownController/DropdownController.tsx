@@ -54,15 +54,14 @@ const AppDropdownController = <
             label={label}
             onBlur={onBlur}
             onChange={(selectValue: any, selectedItem: any) => {
-              if (selectionType === 'single') {
-                return onChange(selectValue);
+              if (selectionType === 'multi') {
+                return onChange(selectedItem);
               }
-              return onChange(selectedItem);
+              return onChange(selectValue);
             }}
             labelField={labelField}
             valueField={valueField}
             placeholder={placeholder}
-            selectionType={selectionType}
             containerStyle={containerStyle}
             labelTextStyle={styles.labelText}
             itemTextStyle={styles.dropdownText}

@@ -5,13 +5,13 @@ import {
   DEFAULT_COLORS,
 } from '../../style';
 import { useMemo } from 'react';
-import { I18nManager, StyleSheet } from 'react-native';
+import { ColorValue, I18nManager, StyleSheet } from 'react-native';
 import { useDeviceOrientation } from './hooks/useOrientation';
 
 interface Props {
   size?: number;
-  radioIconColor?: string;
-  checkIconColor?: string;
+  radioIconColor?: ColorValue;
+  checkIconColor?: ColorValue;
 }
 
 export const useDropdownStyle = (props: Props) => {

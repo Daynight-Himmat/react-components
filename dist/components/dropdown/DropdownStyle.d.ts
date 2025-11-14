@@ -1,7 +1,8 @@
+import { ColorValue } from 'react-native';
 interface Props {
     size?: number;
-    radioIconColor?: string;
-    checkIconColor?: string;
+    radioIconColor?: ColorValue;
+    checkIconColor?: ColorValue;
 }
 export declare const useDropdownStyle: (props: Props) => {
     styles: {
@@ -97,13 +98,13 @@ export declare const useDropdownStyle: (props: Props) => {
             alignItems: "center";
             justifyContent: "center";
             padding: number;
-            borderColor: string;
+            borderColor: ColorValue;
         };
         iconSubContainer: {
             width: "100%";
             height: "100%";
             borderRadius: number;
-            backgroundColor: string;
+            backgroundColor: ColorValue;
         };
         styleHorizontal: {
             width: number | "100%";
@@ -121,7 +122,7 @@ export declare const useDropdownStyle: (props: Props) => {
             height: number;
             alignItems: "center";
             justifyContent: "center";
-            borderColor: string;
+            borderColor: ColorValue;
         };
         showMultiSelectContainer: {
             width: "90%";

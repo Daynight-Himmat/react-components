@@ -14,11 +14,11 @@ const AppDropdownController = (props) => {
     const { styles } = (0, DropdownControllerStyle_1.useDropdownControllerStyle)();
     return (<react_hook_form_1.Controller control={control} name={controller} render={({ fieldState: { error }, field: { onBlur, onChange, value }, }) => (<react_native_1.View style={styles.mainContainer}>
           <Dropdown_1.default data={data} value={value} label={label} onBlur={onBlur} onChange={(selectValue, selectedItem) => {
-                if (selectionType === 'single') {
-                    return onChange(selectValue);
+                if (selectionType === 'multi') {
+                    return onChange(selectedItem);
                 }
-                return onChange(selectedItem);
-            }} labelField={labelField} valueField={valueField} placeholder={placeholder} selectionType={selectionType} containerStyle={containerStyle} labelTextStyle={styles.labelText} itemTextStyle={styles.dropdownText} placeholderStyle={styles.itemContainer} selectedTextStyle={styles.selectionText} style={[styles.dropdownContainer, error && styles.errorWrapper]} {...rest}/>
+                return onChange(selectValue);
+            }} labelField={labelField} valueField={valueField} placeholder={placeholder} containerStyle={containerStyle} labelTextStyle={styles.labelText} itemTextStyle={styles.dropdownText} placeholderStyle={styles.itemContainer} selectedTextStyle={styles.selectionText} style={[styles.dropdownContainer, error && styles.errorWrapper]} {...rest}/>
           {error && <AppText_1.default style={styles.error}>{error?.message}</AppText_1.default>}
         </react_native_1.View>)}/>);
 };

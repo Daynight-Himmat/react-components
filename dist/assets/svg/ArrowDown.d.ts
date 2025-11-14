@@ -1,6 +1,4 @@
 import React from "react";
-declare const ArrowDown: ({ size, color }: {
-    size?: number | undefined;
-    color?: string | undefined;
-}) => React.JSX.Element;
+import { SvgInterface } from "../../interface/svg.interface";
+declare const ArrowDown: ({ size, color }: SvgInterface) => React.JSX.Element;
 export default ArrowDown;
