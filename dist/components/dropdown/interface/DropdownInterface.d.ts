@@ -1,7 +1,6 @@
 import React from 'react';
 import type { StyleProp, TextStyle, ViewStyle, TextProps, ImageStyle, FlatListProps } from 'react-native';
 import { ChipInterface } from './ChipInterface';
-import { ThemeColors } from '../../../interface/colors.interface';
 export type IDropdownRef = {
     open: () => void;
     close: () => void;
@@ -24,8 +23,11 @@ export type DropdownProps<S, T extends SelectionType> = {
     placeholder?: string;
     onFocus?: () => void;
     autoScroll?: boolean;
+    activeColor?: string;
     searchField?: keyof S;
     value?: S[] | undefined;
+    checkIconColor?: string;
+    radioIconColor?: string;
     itemTestIDField?: string;
     backgroundColor?: string;
     keyboardAvoiding?: boolean;
@@ -37,11 +39,8 @@ export type DropdownProps<S, T extends SelectionType> = {
     selectedTextProps?: TextProps;
     subfixIcon?: React.JSX.Element;
     onClear?: (id?: number) => void;
-    activeColor?: keyof ThemeColors;
     iconStyle?: StyleProp<ImageStyle>;
     chipContainerProps?: ChipInterface;
-    checkIconColor?: keyof ThemeColors;
-    radioIconColor?: keyof ThemeColors;
     multiSelectIcon?: React.JSX.Element;
     mode?: 'default' | 'modal' | 'auto';
     itemTextStyle?: StyleProp<TextStyle>;

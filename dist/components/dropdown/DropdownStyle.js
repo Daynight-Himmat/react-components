@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useDropdownStyle = void 0;
+const style_1 = require("../../style");
 const react_1 = require("react");
 const react_native_1 = require("react-native");
 const useOrientation_1 = require("./hooks/useOrientation");
-const style_1 = require("../../style");
 const useDropdownStyle = (props) => {
     const { ...colors } = style_1.LIGHT_COLORS;
     const orientation = (0, useOrientation_1.useDeviceOrientation)();

@@ -40,14 +40,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_native_1 = require("react-native");
 const lodash_1 = __importDefault(require("lodash"));
 const AppText_1 = __importDefault(require("../text/AppText"));
-const Chip_1 = __importDefault(require("./components/chip/Chip"));
+const Chip_1 = __importDefault(require("./component/chip/Chip"));
 const react_1 = __importStar(require("react"));
 const useDropdown_1 = __importDefault(require("./hooks/useDropdown"));
 const SvgButton_1 = __importDefault(require("../svgButton/SvgButton"));
 const DropdownStyle_1 = require("./DropdownStyle");
 const CheckIcon_1 = __importDefault(require("../../assets/svg/CheckIcon"));
 const svg_1 = require("../../assets/svg");
-const TextInput_1 = __importDefault(require("./components/input/TextInput"));
+const TextInput_1 = __importDefault(require("./component/input/TextInput"));
 const DropdownComponent = (props) => {
     const { label, testID, iconStyle, renderItem, style = {}, subfixIcon, labelField, valueField, onChangeText, itemTextStyle, flatListProps, minHeight = 0, containerStyle, search = false, renderLeftIcon, checkIconColor, radioIconColor, multiSelectIcon, itemTestIDField, maxHeight = 300, inverted = true, renderRightIcon, backgroundColor, placeholderStyle, inputSearchStyle, searchPlaceholder, selectedTextStyle, renderInputSearch, iconColor = 'gray', accessibilityLabel, itemContainerStyle, labelContainer = {}, labelTextStyle = {}, selectedTextProps = {}, chipContainerProps = {}, keyboardAvoiding = true, selectionType = 'single', activeColor = 'lightGray', dropdownPosition = 'auto', itemAccessibilityLabelField, placeholder = 'Please select', showsVerticalScrollIndicator = true, } = props;
     const { chipColor, clearIcon, textColor, onClearPress: onClear, } = chipContainerProps;
@@ -99,7 +99,7 @@ const DropdownComponent = (props) => {
     }, [styles]);
     const renderCheckItem = (0, react_1.useCallback)(({ item, index }) => {
         const isSelected = lodash_1.default.some(currentValue, (h) => lodash_1.default.isEqual(lodash_1.default.get(h, valueField), lodash_1.default.get(item, valueField)));
-        return (<react_native_1.TouchableHighlight key={index.toString()} testID={lodash_1.default.get(item, itemTestIDField || labelField)} accessible={!!accessibilityLabel} accessibilityLabel={lodash_1.default.get(item, itemAccessibilityLabelField || labelField)} underlayColor={colors[activeColor]} onPress={() => onCheckPress(item)}>
+        return (<react_native_1.TouchableHighlight key={index.toString()} testID={lodash_1.default.get(item, itemTestIDField || labelField)} accessible={!!accessibilityLabel} accessibilityLabel={lodash_1.default.get(item, itemAccessibilityLabelField || labelField)} underlayColor={activeColor} onPress={() => onCheckPress(item)}>
           <react_native_1.View style={react_native_1.StyleSheet.flatten([itemContainerStyle])}>
             {renderItem ? (renderItem(item, isSelected, labelField, valueField)) : (<react_native_1.View style={styles.item}>
                 <SvgButton_1.default icon={multiSelectIcon ? (multiSelectIcon) : (<CheckIcon_1.default color={colors.white}/>)} onPress={() => onCheckPress(item)} style={[
@@ -141,7 +141,7 @@ const DropdownComponent = (props) => {
         const isSelected = currentValue && lodash_1.default.get(currentValue, valueField);
         const selected = lodash_1.default.isEqual(lodash_1.default.get(item, valueField), isSelected);
         lodash_1.default.assign(item, { _index: index });
-        return (<react_native_1.TouchableHighlight key={index.toString()} testID={lodash_1.default.get(item, itemTestIDField || labelField)} accessible={!!accessibilityLabel} accessibilityLabel={lodash_1.default.get(item, itemAccessibilityLabelField || labelField)} underlayColor={colors[activeColor]} onPress={() => onSelect(item)}>
+        return (<react_native_1.TouchableHighlight key={index.toString()} testID={lodash_1.default.get(item, itemTestIDField || labelField)} accessible={!!accessibilityLabel} accessibilityLabel={lodash_1.default.get(item, itemAccessibilityLabelField || labelField)} underlayColor={activeColor} onPress={() => onSelect(item)}>
           <react_native_1.View style={react_native_1.StyleSheet.flatten([itemContainerStyle])}>
             {renderItem ? (renderItem(item, selected, labelField, valueField)) : (<react_native_1.View style={styles.item}>
                 {renderRadio(selected)}

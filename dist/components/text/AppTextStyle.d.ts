@@ -1,14 +1,13 @@
-import { TextStyle } from 'react-native';
-import { ThemeColors } from '../../interface/colors.interface';
+import { ColorValue, TextStyle } from 'react-native';
 interface props {
     size?: number;
     style?: TextStyle;
-    color?: keyof ThemeColors;
+    color?: ColorValue;
     type?: 'error' | 'normal';
 }
 export declare const useAppTextStyle: ({ size, style, color, type, }: props) => {
     container: {
-        color: import("react-native").ColorValue;
+        color: ColorValue;
         fontFamily?: string | undefined;
         fontSize: number;
         fontStyle?: "normal" | "italic" | undefined;
@@ -18,8 +17,8 @@ export declare const useAppTextStyle: ({ size, style, color, type, }: props) => 
         textAlign?: "auto" | "left" | "right" | "center" | "justify" | undefined;
         textDecorationLine?: "none" | "underline" | "line-through" | "underline line-through" | undefined;
         textDecorationStyle?: "solid" | "double" | "dotted" | "dashed" | undefined;
-        textDecorationColor?: import("react-native").ColorValue | undefined;
-        textShadowColor?: import("react-native").ColorValue | undefined;
+        textDecorationColor?: ColorValue | undefined;
+        textShadowColor?: ColorValue | undefined;
         textShadowOffset?: {
             width: number;
             height: number;
@@ -30,33 +29,33 @@ export declare const useAppTextStyle: ({ size, style, color, type, }: props) => 
         fontVariant?: import("react-native").FontVariant[] | undefined;
         writingDirection?: "auto" | "ltr" | "rtl" | undefined;
         backfaceVisibility?: "visible" | "hidden" | undefined;
-        backgroundColor?: import("react-native").ColorValue | undefined;
-        borderBlockColor?: import("react-native").ColorValue | undefined;
-        borderBlockEndColor?: import("react-native").ColorValue | undefined;
-        borderBlockStartColor?: import("react-native").ColorValue | undefined;
-        borderBottomColor?: import("react-native").ColorValue | undefined;
+        backgroundColor?: ColorValue | undefined;
+        borderBlockColor?: ColorValue | undefined;
+        borderBlockEndColor?: ColorValue | undefined;
+        borderBlockStartColor?: ColorValue | undefined;
+        borderBottomColor?: ColorValue | undefined;
         borderBottomEndRadius?: import("react-native").AnimatableNumericValue | string | undefined;
         borderBottomLeftRadius?: import("react-native").AnimatableNumericValue | string | undefined;
         borderBottomRightRadius?: import("react-native").AnimatableNumericValue | string | undefined;
         borderBottomStartRadius?: import("react-native").AnimatableNumericValue | string | undefined;
-        borderColor?: import("react-native").ColorValue | undefined;
+        borderColor?: ColorValue | undefined;
         borderCurve?: "circular" | "continuous" | undefined;
-        borderEndColor?: import("react-native").ColorValue | undefined;
+        borderEndColor?: ColorValue | undefined;
         borderEndEndRadius?: import("react-native").AnimatableNumericValue | string | undefined;
         borderEndStartRadius?: import("react-native").AnimatableNumericValue | string | undefined;
-        borderLeftColor?: import("react-native").ColorValue | undefined;
+        borderLeftColor?: ColorValue | undefined;
         borderRadius?: import("react-native").AnimatableNumericValue | string | undefined;
-        borderRightColor?: import("react-native").ColorValue | undefined;
-        borderStartColor?: import("react-native").ColorValue | undefined;
+        borderRightColor?: ColorValue | undefined;
+        borderStartColor?: ColorValue | undefined;
         borderStartEndRadius?: import("react-native").AnimatableNumericValue | string | undefined;
         borderStartStartRadius?: import("react-native").AnimatableNumericValue | string | undefined;
         borderStyle?: "solid" | "dotted" | "dashed" | undefined;
-        borderTopColor?: import("react-native").ColorValue | undefined;
+        borderTopColor?: ColorValue | undefined;
         borderTopEndRadius?: import("react-native").AnimatableNumericValue | string | undefined;
         borderTopLeftRadius?: import("react-native").AnimatableNumericValue | string | undefined;
         borderTopRightRadius?: import("react-native").AnimatableNumericValue | string | undefined;
         borderTopStartRadius?: import("react-native").AnimatableNumericValue | string | undefined;
-        outlineColor?: import("react-native").ColorValue | undefined;
+        outlineColor?: ColorValue | undefined;
         outlineOffset?: import("react-native").AnimatableNumericValue | undefined;
         outlineStyle?: "solid" | "dotted" | "dashed" | undefined;
         outlineWidth?: import("react-native").AnimatableNumericValue | undefined;
@@ -145,7 +144,7 @@ export declare const useAppTextStyle: ({ size, style, color, type, }: props) => 
         paddingInline?: import("react-native").DimensionValue | undefined;
         paddingInlineEnd?: import("react-native").DimensionValue | undefined;
         paddingInlineStart?: import("react-native").DimensionValue | undefined;
-        shadowColor?: import("react-native").ColorValue | undefined;
+        shadowColor?: ColorValue | undefined;
         shadowOffset?: Readonly<{
             width: number;
             height: number;

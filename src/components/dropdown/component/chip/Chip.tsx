@@ -26,7 +26,7 @@ const Chip = (props: ChipInterface) => {
             icon={
               <ClearIcon
                 size={8}
-                color={textColor ? colors[textColor] : colors.white}
+                color={textColor ? textColor : colors.white}
               />
             }
             onPress={onClearPress}

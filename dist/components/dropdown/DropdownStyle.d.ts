@@ -1,8 +1,7 @@
-import { ThemeColors } from '../../interface/colors.interface';
 interface Props {
     size?: number;
-    radioIconColor?: keyof ThemeColors;
-    checkIconColor?: keyof ThemeColors;
+    radioIconColor?: string;
+    checkIconColor?: string;
 }
 export declare const useDropdownStyle: (props: Props) => {
     styles: {

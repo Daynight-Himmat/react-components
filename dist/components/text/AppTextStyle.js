@@ -10,11 +10,7 @@ const useAppTextStyle = ({ size, style, color, type = 'normal', }) => {
         return react_native_1.StyleSheet.create({
             container: {
                 fontSize: size || 14,
-                color: type === 'error'
-                    ? colors.error
-                    : color
-                        ? colors[color]
-                        : colors.primary,
+                color: type === 'error' ? colors.error : color ? color : colors.primary,
                 ...style,
             },
             require: {

@@ -1,8 +1,8 @@
-import { ThemeColors } from '../../../interface/colors.interface';
+import { ColorValue } from "react-native";
 export interface ChipInterface {
     label?: string;
     onClearPress?: () => void;
-    chipColor?: keyof ThemeColors;
-    textColor?: keyof ThemeColors;
+    chipColor?: ColorValue;
+    textColor?: ColorValue;
     clearIcon?: React.JSX.Element;
 }

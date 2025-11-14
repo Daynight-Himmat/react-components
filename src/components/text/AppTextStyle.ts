@@ -1,12 +1,11 @@
 import { useMemo } from 'react';
 import { LIGHT_COLORS } from '../../style';
-import { StyleSheet, TextStyle } from 'react-native';
-import { ThemeColors } from '../../interface/colors.interface';
+import { ColorValue, StyleSheet, TextStyle } from 'react-native';
 
 interface props {
   size?: number;
   style?: TextStyle;
-  color?: keyof ThemeColors;
+  color?: ColorValue;
   type?: 'error' | 'normal';
 }
 

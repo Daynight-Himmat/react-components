@@ -28,7 +28,7 @@ const useChipStyle = (props: ChipInterface) => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: chipColor ? colors[chipColor] : colors.lightGray,
+        backgroundColor: chipColor ? chipColor : colors.lightGray,
       },
       chipText: {
         paddingLeft: 10,
@@ -42,8 +42,8 @@ const useChipStyle = (props: ChipInterface) => {
         marginHorizontal: 4,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: textColor ? colors[textColor] : colors.white,
-        backgroundColor: chipColor ? colors[chipColor] : colors.lightGray,
+        borderColor: textColor ? textColor : colors.white,
+        backgroundColor: chipColor ? chipColor : colors.lightGray,
       },
       clearIcon: {
         width: 12,

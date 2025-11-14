@@ -1,13 +1,12 @@
 import React from 'react';
-import { Text, TextProps } from 'react-native';
 import { useAppTextStyle } from './AppTextStyle';
-import { ThemeColors } from '../../interface/colors.interface';
+import { ColorValue, Text, TextProps } from 'react-native';
 
 interface props extends TextProps {
   size?: number;
   fontFamily?: any;
   required?: boolean;
-  color?: keyof ThemeColors;
+  color?: ColorValue;
   type?: 'error' | 'normal';
 }
 
