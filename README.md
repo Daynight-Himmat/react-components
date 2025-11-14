@@ -6,8 +6,8 @@ Supports **single** & **multiple selection**, custom icons, styling, and easy in
 ---
 # Example
 
-![Single Selection](./assets/images/single_select.png)
-![Multi Selection](./assets/images/multi_select.png)
+![Single Selection](https://github.com/Daynight-Himmat/react-components/blob/defcdc886a57e41315aff3424f4944104b5b7de8/src/assets/images/single_select.png)
+![Multi Selection](https://github.com/Daynight-Himmat/react-components/blob/defcdc886a57e41315aff3424f4944104b5b7de8/src/assets/images/multi_select.png)
 
 
 ---
