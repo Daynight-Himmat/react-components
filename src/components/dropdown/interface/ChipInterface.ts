@@ -1,9 +1,7 @@
-import { ThemeColors } from '../../../interface/colors.interface';
-
 export interface ChipInterface {
   label?: string;
   onClearPress?: () => void;
-  chipColor?: keyof ThemeColors;
-  textColor?: keyof ThemeColors;
+  chipColor?: string;
+  textColor?: string;
   clearIcon?: React.JSX.Element;
 }

@@ -1,18 +1,17 @@
+import {
+  SPACING,
+  LIGHT_COLORS,
+  SCREEN_WIDTH,
+  DEFAULT_COLORS,
+} from '../../style';
 import { useMemo } from 'react';
 import { I18nManager, StyleSheet } from 'react-native';
 import { useDeviceOrientation } from './hooks/useOrientation';
-import { ThemeColors } from '../../interface/colors.interface';
-import {
-  DEFAULT_COLORS,
-  SCREEN_WIDTH,
-  SPACING,
-  LIGHT_COLORS,
-} from '../../style';
 
 interface Props {
   size?: number;
-  radioIconColor?: keyof ThemeColors;
-  checkIconColor?: keyof ThemeColors;
+  radioIconColor?: string;
+  checkIconColor?: string;
 }
 
 export const useDropdownStyle = (props: Props) => {

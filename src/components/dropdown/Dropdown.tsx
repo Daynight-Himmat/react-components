@@ -207,7 +207,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
             item,
             itemAccessibilityLabelField || labelField,
           )}
-          underlayColor={colors[activeColor]}
+          underlayColor={activeColor}
           onPress={() => onCheckPress(item)}
         >
           <View style={StyleSheet.flatten([itemContainerStyle])}>
@@ -281,7 +281,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
             item,
             itemAccessibilityLabelField || labelField,
           )}
-          underlayColor={colors[activeColor]}
+          underlayColor={activeColor}
           onPress={() => onSelect(item)}
         >
           <View style={StyleSheet.flatten([itemContainerStyle])}>
