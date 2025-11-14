@@ -6,8 +6,8 @@ const react_native_1 = require("react-native");
 const useOrientation_1 = require("./hooks/useOrientation");
 const style_1 = require("../../style");
 const useDropdownStyle = (props) => {
-    const orientation = (0, useOrientation_1.useDeviceOrientation)();
     const { ...colors } = style_1.LIGHT_COLORS;
+    const orientation = (0, useOrientation_1.useDeviceOrientation)();
     const { size = 16, radioIconColor, checkIconColor } = props;
     const styles = (0, react_1.useMemo)(() => {
         return react_native_1.StyleSheet.create({
@@ -53,6 +53,7 @@ const useDropdownStyle = (props) => {
             },
             title: {
                 fontSize: 16,
+                color: colors.gray,
                 marginVertical: style_1.SPACING.s6,
                 writingDirection: react_native_1.I18nManager.isRTL ? 'rtl' : 'ltr',
             },
@@ -67,6 +68,7 @@ const useDropdownStyle = (props) => {
             textItem: {
                 flex: 1,
                 fontSize: 16,
+                color: colors.gray,
                 writingDirection: react_native_1.I18nManager.isRTL ? 'rtl' : 'ltr',
             },
             icon: {
@@ -90,7 +92,7 @@ const useDropdownStyle = (props) => {
                 paddingVertical: style_1.SPACING.s6,
             },
             labelTextStyle: {
-                color: colors.black,
+                color: colors.gray,
             },
             itemIconContainer: {
                 borderWidth: 2,

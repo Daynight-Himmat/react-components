@@ -234,12 +234,11 @@ const useDropdown = (props) => {
         });
     }, [setCurrentValue, valueField, onChange, currentValue]);
     const onClearPress = (0, react_1.useCallback)((item) => {
-        const clone = lodash_1.default.clone(currentValue);
-        const rem = lodash_1.default.remove(clone, i => i?.[valueField] !== item[valueField]);
-        const val = rem?.map(i => i?.[valueField]);
-        setCurrentValue(rem);
+        const updated = currentValue.filter((i) => i[valueField] !== item[valueField]);
+        const val = currentValue.map((i) => i[valueField]);
+        setCurrentValue(updated);
         onChange?.(item[valueField], val);
-    }, [onChange]);
+    }, [currentValue, valueField, onChange, setCurrentValue]);
     return {
         ref,
         font,

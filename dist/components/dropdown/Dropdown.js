@@ -49,9 +49,12 @@ const CheckIcon_1 = __importDefault(require("../../assets/svg/CheckIcon"));
 const svg_1 = require("../../assets/svg");
 const TextInput_1 = __importDefault(require("./components/input/TextInput"));
 const DropdownComponent = (props) => {
-    const { label, testID, iconStyle, renderItem, style = {}, subfixIcon, labelField, valueField, onChangeText, itemTextStyle, flatListProps, minHeight = 0, containerStyle, search = false, renderLeftIcon, multiSelectIcon, itemTestIDField, maxHeight = 300, inverted = true, renderRightIcon, backgroundColor, placeholderStyle, inputSearchStyle, searchPlaceholder, selectedTextStyle, renderInputSearch, iconColor = 'gray', accessibilityLabel, itemContainerStyle, labelContainer = {}, labelTextStyle = {}, selectedTextProps = {}, chipContainerProps = {}, selectionType = 'single', activeColor = 'lightGray', keyboardAvoiding = true, dropdownPosition = 'auto', placeholder = 'Select item', itemAccessibilityLabelField, showsVerticalScrollIndicator = true, } = props;
+    const { label, testID, iconStyle, renderItem, style = {}, subfixIcon, labelField, valueField, onChangeText, itemTextStyle, flatListProps, minHeight = 0, containerStyle, search = false, renderLeftIcon, checkIconColor, radioIconColor, multiSelectIcon, itemTestIDField, maxHeight = 300, inverted = true, renderRightIcon, backgroundColor, placeholderStyle, inputSearchStyle, searchPlaceholder, selectedTextStyle, renderInputSearch, iconColor = 'gray', accessibilityLabel, itemContainerStyle, labelContainer = {}, labelTextStyle = {}, selectedTextProps = {}, chipContainerProps = {}, keyboardAvoiding = true, selectionType = 'single', activeColor = 'lightGray', dropdownPosition = 'auto', itemAccessibilityLabelField, placeholder = 'Please select', showsVerticalScrollIndicator = true, } = props;
     const { chipColor, clearIcon, textColor, onClearPress: onClear, } = chipContainerProps;
-    const { styles, colors } = (0, DropdownStyle_1.useDropdownStyle)({});
+    const { styles, colors } = (0, DropdownStyle_1.useDropdownStyle)({
+        checkIconColor: checkIconColor,
+        radioIconColor: radioIconColor,
+    });
     const { ref, font, visible, refList, position, onSelect, listData, onSearch, onMeasure, searchText, showOrClose, scrollIndex, currentValue, onCheckPress, onClearPress, setSearchText, keyboardHeight, } = (0, useDropdown_1.default)({ ...props });
     const renderRight = () => {
         return renderRightIcon ? (renderRightIcon(visible)) : (<SvgButton_1.default icon={subfixIcon ? (subfixIcon) : visible ? (<svg_1.ArrowUp color={iconColor}/>) : (<svg_1.ArrowDown color={iconColor}/>)} onPress={showOrClose} style={react_native_1.StyleSheet.flatten([
@@ -102,7 +105,11 @@ const DropdownComponent = (props) => {
                 <SvgButton_1.default icon={multiSelectIcon ? (multiSelectIcon) : (<CheckIcon_1.default color={colors.white}/>)} onPress={() => onCheckPress(item)} style={[
                     styles.checkContainer,
                     {
-                        backgroundColor: isSelected ? colors.gray : colors.white,
+                        backgroundColor: isSelected
+                            ? checkIconColor
+                                ? checkIconColor
+                                : colors.gray
+                            : colors.white,
                     },
                 ]}/>
                 <AppText_1.default style={react_native_1.StyleSheet.flatten([
@@ -255,7 +262,6 @@ const DropdownComponent = (props) => {
               <react_native_1.View style={react_native_1.StyleSheet.flatten([
                         styles.flex1,
                         isFull && styles.styleContainerVertical,
-                        backgroundColor && { backgroundColor: backgroundColor },
                         keyboardStyle,
                     ])}>
                 <react_native_1.View style={react_native_1.StyleSheet.flatten([

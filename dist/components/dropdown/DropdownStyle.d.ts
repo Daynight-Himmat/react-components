@@ -48,6 +48,7 @@ export declare const useDropdownStyle: (props: Props) => {
         };
         title: {
             fontSize: number;
+            color: string;
             marginVertical: number;
             writingDirection: "ltr" | "rtl";
         };
@@ -62,6 +63,7 @@ export declare const useDropdownStyle: (props: Props) => {
         textItem: {
             flex: number;
             fontSize: number;
+            color: string;
             writingDirection: "ltr" | "rtl";
         };
         icon: {

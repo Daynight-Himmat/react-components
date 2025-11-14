@@ -67,7 +67,7 @@ export type DropdownProps<S, T extends SelectionType> = {
     onChange?: (selecteValue?: keyof S, selectedList?: SelectionType extends 'single' | 'multi' ? S[] : S) => void;
 };
 export interface IUseDetectDevice {
-    isAndroid: boolean;
     isIOS: boolean;
     isTablet: boolean;
+    isAndroid: boolean;
 }
