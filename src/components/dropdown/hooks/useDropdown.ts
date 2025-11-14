@@ -323,13 +323,14 @@ const useDropdown = <T, Mode extends 'single' | 'multi'>(
 
   const onClearPress = useCallback(
     (item: T) => {
-      const clone = _.clone(currentValue);
-      const rem = _.remove(clone, i => i?.[valueField] !== item[valueField]);
-      const val = rem?.map(i => i?.[valueField]);
-      setCurrentValue(rem);
+      const updated = currentValue.filter(
+        (i: any) => i[valueField] !== item[valueField],
+      );
+      const val = currentValue.map((i: any) => i[valueField]);
+      setCurrentValue(updated);
       onChange?.(item[valueField] as keyof T, val);
     },
-    [onChange],
+    [currentValue, valueField, onChange, setCurrentValue],
   );
 
   return {

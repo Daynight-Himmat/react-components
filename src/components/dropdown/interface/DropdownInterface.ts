@@ -88,7 +88,7 @@ export type DropdownProps<S, T extends SelectionType> = {
 };
 
 export interface IUseDetectDevice {
-  isAndroid: boolean;
   isIOS: boolean;
   isTablet: boolean;
+  isAndroid: boolean;
 }

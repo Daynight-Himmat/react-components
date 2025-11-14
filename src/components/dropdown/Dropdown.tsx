@@ -40,6 +40,8 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
     containerStyle,
     search = false,
     renderLeftIcon,
+    checkIconColor,
+    radioIconColor,
     multiSelectIcon,
     itemTestIDField,
     maxHeight = 300,
@@ -58,12 +60,12 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
     labelTextStyle = {},
     selectedTextProps = {},
     chipContainerProps = {},
+    keyboardAvoiding = true,
     selectionType = 'single',
     activeColor = 'lightGray',
-    keyboardAvoiding = true,
     dropdownPosition = 'auto',
-    placeholder = 'Select item',
     itemAccessibilityLabelField,
+    placeholder = 'Please select',
     showsVerticalScrollIndicator = true,
   } = props;
 
@@ -74,7 +76,10 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
     onClearPress: onClear,
   } = chipContainerProps;
 
-  const { styles, colors } = useDropdownStyle({});
+  const { styles, colors } = useDropdownStyle({
+    checkIconColor: checkIconColor,
+    radioIconColor: radioIconColor,
+  });
   const {
     ref,
     font,
@@ -222,7 +227,11 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
                   style={[
                     styles.checkContainer,
                     {
-                      backgroundColor: isSelected ? colors.gray : colors.white,
+                      backgroundColor: isSelected
+                        ? checkIconColor
+                          ? checkIconColor
+                          : colors.gray
+                        : colors.white,
                     },
                   ]}
                 />
@@ -457,7 +466,6 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
                 style={StyleSheet.flatten([
                   styles.flex1,
                   isFull && styles.styleContainerVertical,
-                  backgroundColor && { backgroundColor: backgroundColor },
                   keyboardStyle,
                 ])}
               >

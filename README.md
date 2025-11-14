@@ -9,13 +9,13 @@ Supports **single** & **multiple selection**, custom icons, styling, and easy in
 
 ### Install Package
 
-```bash
+```bash title="install.sh" copy
 npm install @rn-components-dropdown/dropdown
 ```
 
 ### React Hook Form (optional — required only for DropdownController)
 
-```bash
+```bash title="install.sh" copy
 npm install react-hook-form
 ```
 
@@ -102,8 +102,7 @@ export default function FormScreen() {
   return (
     <DropdownController
       control={control}
-      name="fruit"
-      rules={{ required: "Please select a fruit" }}
+      controller="fruit"
       dropProps={{
         data: [
           { id: 1, label: "Apple" },
@@ -125,10 +124,10 @@ export default function FormScreen() {
 | Prop          | Type        | Description                                   |
 |---------------|-------------|-----------------------------------------------|
 | control       | Control     | React Hook Form control object                |
-| name          | string      | Field name in the form                        |
+| controller    | string      | Field name in the form                        |
 | rules         | object      | Validation rules (optional)                   |
-| dropProps     | object      | All dropdown props                             |
-| defaultValue  | any         | Initial/default value                          |
+| dropProps     | object      | All dropdown props                            |
+| defaultValue  | any         | Initial/default value                         |
 
 ---
 

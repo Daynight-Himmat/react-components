@@ -2,7 +2,12 @@ import { useMemo } from 'react';
 import { I18nManager, StyleSheet } from 'react-native';
 import { useDeviceOrientation } from './hooks/useOrientation';
 import { ThemeColors } from '../../interface/colors.interface';
-import { DEFAULT_COLORS, SCREEN_WIDTH, SPACING, LIGHT_COLORS } from '../../style';
+import {
+  DEFAULT_COLORS,
+  SCREEN_WIDTH,
+  SPACING,
+  LIGHT_COLORS,
+} from '../../style';
 
 interface Props {
   size?: number;
@@ -11,8 +16,8 @@ interface Props {
 }
 
 export const useDropdownStyle = (props: Props) => {
+  const { ...colors } = LIGHT_COLORS;
   const orientation = useDeviceOrientation();
-  const { ...colors } = LIGHT_COLORS
   const { size = 16, radioIconColor, checkIconColor } = props;
 
   const styles = useMemo(() => {
@@ -59,6 +64,7 @@ export const useDropdownStyle = (props: Props) => {
       },
       title: {
         fontSize: 16,
+        color: colors.gray,
         marginVertical: SPACING.s6,
         writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
       },
@@ -73,6 +79,7 @@ export const useDropdownStyle = (props: Props) => {
       textItem: {
         flex: 1,
         fontSize: 16,
+        color: colors.gray,
         writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
       },
       icon: {
@@ -96,7 +103,7 @@ export const useDropdownStyle = (props: Props) => {
         paddingVertical: SPACING.s6,
       },
       labelTextStyle: {
-        color: colors.black,
+        color: colors.gray,
       },
       itemIconContainer: {
         borderWidth: 2,
