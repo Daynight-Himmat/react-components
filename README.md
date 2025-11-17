@@ -6,8 +6,11 @@ Supports **single** & **multiple selection**, custom icons, styling, and easy in
 ---
 # Example
 
-![Single Selection](https://github.com/Daynight-Himmat/react-components/blob/defcdc886a57e41315aff3424f4944104b5b7de8/src/assets/images/single_select.png)
-![Multi Selection](https://github.com/Daynight-Himmat/react-components/blob/defcdc886a57e41315aff3424f4944104b5b7de8/src/assets/images/multi_select.png)
+<p align="center">
+  <img src="https://github.com/Daynight-Himmat/react-components/blob/defcdc886a57e41315aff3424f4944104b5b7de8/src/assets/images/single_select.png" width="250" />
+  <img src="https://github.com/Daynight-Himmat/react-components/blob/defcdc886a57e41315aff3424f4944104b5b7de8/src/assets/images/multi_select.png" width="250" />
+</p>
+
 
 
 ---
