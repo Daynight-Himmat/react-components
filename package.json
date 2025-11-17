@@ -5,7 +5,7 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Daynight-Himmat/react-components.git"
+    "url": "git+https://github.com/Daynight-Himmat/react-components.git"
   },
   "scripts": {
     "build": "tsc",
