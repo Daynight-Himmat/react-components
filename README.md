@@ -7,8 +7,8 @@ Supports **single** & **multiple selection**, custom icons, styling, and easy in
 # Example
 
 <p align="center">
-  <img src="https://github.com/Daynight-Himmat/react-components/blob/defcdc886a57e41315aff3424f4944104b5b7de8/src/assets/images/single_select.png" width="250" />
-  <img src="https://github.com/Daynight-Himmat/react-components/blob/defcdc886a57e41315aff3424f4944104b5b7de8/src/assets/images/multi_select.png" width="250" />
+  <img src="https://github.com/Daynight-Himmat/react-components/blob/804b400dcdafc96b0a59f451493ea1685e06500f/src/assets/images/signle_selection.png" width="250" />
+  <img src="https://github.com/Daynight-Himmat/react-components/blob/804b400dcdafc96b0a59f451493ea1685e06500f/src/assets/images/multi_selection.png" width="250" />
 </p>
 
 
