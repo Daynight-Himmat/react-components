@@ -3,9 +3,13 @@
   "version": "1.0.22",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "homepage": "https://www.npmjs.com/package/@rn-components-dropdown/dropdown",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Daynight-Himmat/react-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Daynight-Himmat/react-components/issues"
   },
   "scripts": {
     "build": "tsc",
@@ -15,10 +19,15 @@
   },
   "keywords": [
     "react",
+    "select",
     "dropdown",
+    "ui-library",
+    "multiselect",
     "react-native",
-    "rn-components",
-    "react-components"
+    "rn-component",
+    "form-dropdown",
+    "react-dropdown",
+    "react-native-dropdown"
   ],
   "author": "Himmat Suthar",
   "license": "MIT",
