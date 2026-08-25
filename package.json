@@ -1,6 +1,6 @@
 {
   "name": "@rn-components-dropdown/dropdown",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "homepage": "https://www.npmjs.com/package/@rn-components-dropdown/dropdown",
