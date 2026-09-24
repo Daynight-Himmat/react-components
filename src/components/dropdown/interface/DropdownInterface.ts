@@ -15,9 +15,9 @@ export type IDropdownRef = {
   close: () => void;
 };
 
-export type SelectionType = 'single' | 'multi';
+export type SELECTIONS_TYPE = 'single' | 'multi';
 
-export type DropdownProps<S, T extends SelectionType> = {
+export type DropdownProps<S, T extends SELECTIONS_TYPE> = {
   data: S[];
   testID?: string;
   search?: boolean;
@@ -63,7 +63,7 @@ export type DropdownProps<S, T extends SelectionType> = {
   placeholderStyle?: StyleProp<TextStyle>;
   inputSearchStyle?: StyleProp<TextStyle>;
   onChangeText?: (search: string) => void;
-  onConfirmSelectItem?: (item: T) => void;
+  onConfirmSelectItem?: (item: S) => void;
   selectedTextStyle?: StyleProp<TextStyle>;
   itemContainerStyle?: StyleProp<ViewStyle>;
   dropdownPosition?: 'auto' | 'top' | 'bottom';
@@ -83,7 +83,7 @@ export type DropdownProps<S, T extends SelectionType> = {
   ) => React.JSX.Element | null | undefined;
   onChange?: (
     selecteValue?: keyof S,
-    selectedList?: SelectionType extends 'single' | 'multi' ? S[] : S,
+    selectedList?: SELECTIONS_TYPE extends 'single' | 'multi' ? S[] : S,
   ) => void;
 };
 

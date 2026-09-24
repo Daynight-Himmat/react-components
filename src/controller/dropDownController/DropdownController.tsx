@@ -3,38 +3,39 @@ import { View } from 'react-native';
 import AppText from '../../components/text/AppText';
 import {
   DropdownProps,
-  SelectionType,
+  SELECTIONS_TYPE,
 } from '../../components/dropdown/interface/DropdownInterface';
 import DropdownComponent from '../../components/dropdown/Dropdown';
 import { useDropdownControllerStyle } from './DropdownControllerStyle';
 import { Control, Controller, FieldValues, Path } from 'react-hook-form';
 
-type DropControllerProps<S, T extends SelectionType, U extends FieldValues> = {
+interface DropControllerProps<
+  U extends FieldValues,
+  S,
+  T extends SELECTIONS_TYPE = 'single',
+> extends DropdownProps<S, T> {
   control: Control<U>;
   controller: Path<U>;
-  dropProps: DropdownProps<S, T>;
-};
+}
 
 const AppDropdownController = <
-  S,
-  T extends SelectionType,
   U extends FieldValues,
+  S,
+  T extends SELECTIONS_TYPE = 'single',
 >(
-  props: DropControllerProps<S, T, U>,
+  props: DropControllerProps<U, S, T>,
 ) => {
   const {
+    data,
+    label,
     control,
+    labelField,
     controller,
-    dropProps: {
-      data,
-      label,
-      labelField,
-      valueField,
-      placeholder,
-      selectionType,
-      containerStyle,
-      ...rest
-    },
+    valueField,
+    placeholder,
+    selectionType,
+    containerStyle,
+    ...rest
   } = props;
 
   const { styles } = useDropdownControllerStyle();

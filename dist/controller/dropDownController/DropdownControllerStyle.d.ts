@@ -1,7 +1,7 @@
 export declare const useDropdownControllerStyle: () => {
-    styles: {
+    styles: Readonly<{
         mainContainer: {
-            width: "100%";
+            width: string;
             marginBottom: number;
         };
         dropdownContainer: {
@@ -33,7 +33,7 @@ export declare const useDropdownControllerStyle: () => {
         error: {
             color: string;
         };
-    };
+    }>;
     colors: {
         blue: string;
         gray: string;

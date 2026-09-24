@@ -22,9 +22,6 @@ const AppText = ({
 }: props) => {
   const family = fontFamily;
   const styles = useAppTextStyle({
-    style: {
-      fontFamily: family,
-    },
     size,
     color,
     type,

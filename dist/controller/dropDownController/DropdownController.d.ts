@@ -1,10 +1,9 @@
 import React from 'react';
-import { DropdownProps, SelectionType } from '../../components/dropdown/interface/DropdownInterface';
+import { DropdownProps, SELECTIONS_TYPE } from '../../components/dropdown/interface/DropdownInterface';
 import { Control, FieldValues, Path } from 'react-hook-form';
-type DropControllerProps<S, T extends SelectionType, U extends FieldValues> = {
+interface DropControllerProps<U extends FieldValues, S, T extends SELECTIONS_TYPE = 'single'> extends DropdownProps<S, T> {
     control: Control<U>;
     controller: Path<U>;
-    dropProps: DropdownProps<S, T>;
-};
-declare const AppDropdownController: <S, T extends SelectionType, U extends FieldValues>(props: DropControllerProps<S, T, U>) => React.JSX.Element;
+}
+declare const AppDropdownController: <U extends FieldValues, S, T extends SELECTIONS_TYPE = "single">(props: DropControllerProps<U, S, T>) => React.JSX.Element;
 export default AppDropdownController;

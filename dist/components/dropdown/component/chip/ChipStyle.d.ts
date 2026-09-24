@@ -1,24 +1,14 @@
 import { ChipInterface } from '../../interface/ChipInterface';
 declare const useChipStyle: (props: ChipInterface) => {
-    styles: {
+    styles: Readonly<{
         box: {
             elevation: number;
-            width: "auto";
+            width: string;
             borderRadius: number;
             flexDirection: "row";
             alignItems: "center";
             justifyContent: "center";
-            backgroundColor: import("react-native").ColorValue;
-            margin: number;
-            height: number;
-        } | {
-            elevation: number;
-            width: "auto";
-            borderRadius: number;
-            flexDirection: "row";
-            alignItems: "center";
-            justifyContent: "center";
-            backgroundColor: import("react-native").ColorValue;
+            backgroundColor: string | number | import("react-native").NativeColorValue;
             shadowRadius?: undefined;
             shadowOpacity?: undefined;
             shadowColor?: undefined;
@@ -27,12 +17,12 @@ declare const useChipStyle: (props: ChipInterface) => {
             height: number;
         } | {
             elevation: number;
-            width: "auto";
+            width: string;
             borderRadius: number;
             flexDirection: "row";
             alignItems: "center";
             justifyContent: "center";
-            backgroundColor: import("react-native").ColorValue;
+            backgroundColor: string | number | import("react-native").NativeColorValue;
             shadowRadius: number;
             shadowOpacity: number;
             shadowColor: string;
@@ -55,8 +45,8 @@ declare const useChipStyle: (props: ChipInterface) => {
             marginHorizontal: number;
             alignItems: "center";
             justifyContent: "center";
-            borderColor: import("react-native").ColorValue;
-            backgroundColor: import("react-native").ColorValue;
+            borderColor: string | number | import("react-native").NativeColorValue;
+            backgroundColor: string | number | import("react-native").NativeColorValue;
         };
         clearIcon: {
             width: number;
@@ -65,7 +55,7 @@ declare const useChipStyle: (props: ChipInterface) => {
             alignItems: "center";
             justifyContent: "center";
         };
-    };
+    }>;
     colors: {
         blue: string;
         gray: string;

@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useDetectDevice = void 0;
-const react_native_1 = require("react-native");
-const { width, height } = react_native_1.Dimensions.get('window');
+import { Platform, PixelRatio, Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 const isTablet = () => {
-    let pixelDensity = react_native_1.PixelRatio.get();
+    let pixelDensity = PixelRatio.get();
     const adjustedWidth = width * pixelDensity;
     const adjustedHeight = height * pixelDensity;
     if (pixelDensity < 2 && (adjustedWidth >= 1000 || adjustedHeight >= 1000)) {
@@ -15,8 +12,8 @@ const isTablet = () => {
     }
 };
 const useDetectDevice = {
-    isAndroid: react_native_1.Platform.OS === 'android',
-    isIOS: react_native_1.Platform.OS === 'ios',
+    isAndroid: Platform.OS === 'android',
+    isIOS: Platform.OS === 'ios',
     isTablet: isTablet(),
 };
-exports.useDetectDevice = useDetectDevice;
+export { useDetectDevice };

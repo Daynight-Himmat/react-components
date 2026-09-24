@@ -1,7 +1,11 @@
-import { View, FlatList } from 'react-native';
-import { DropdownProps } from '../interface/DropdownInterface';
-declare const useDropdown: <T, Mode extends "single" | "multi">(props: DropdownProps<T, Mode>) => {
-    ref: import("react").RefObject<View | null>;
+import { FlatList } from 'react-native';
+import { DropdownProps, SELECTIONS_TYPE } from '../interface/DropdownInterface';
+declare const useDropdown: <T, Mode extends SELECTIONS_TYPE>(props: DropdownProps<T, Mode>) => {
+    ref: import("react").RefObject<((props: Omit<import("react-native").ViewProps, keyof {
+        ref?: React.Ref<import("react-native").ViewInstance> | undefined;
+    }> & {
+        ref?: React.Ref<import("react-native").ViewInstance> | undefined;
+    }) => React.ReactNode) | null>;
     font: () => {
         fontFamily: string;
     } | {

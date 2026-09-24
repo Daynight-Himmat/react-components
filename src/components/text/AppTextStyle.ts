@@ -11,7 +11,6 @@ interface props {
 
 export const useAppTextStyle = ({
   size,
-  style,
   color,
   type = 'normal',
 }: props) => {
@@ -22,13 +21,12 @@ export const useAppTextStyle = ({
       container: {
         fontSize: size || 14,
         color: type === 'error' ? colors.error : color ? color : colors.primary,
-        ...style,
       },
       require: {
         color: colors.error,
       },
     });
-  }, [size, colors, style, type, color]);
+  }, [size, colors, type, color]);
 
   return styles;
 };

@@ -1,17 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = require("react");
-const style_1 = require("../../../../style");
-const react_native_1 = require("react-native");
+import { useMemo } from 'react';
+import { LIGHT_COLORS } from '../../../../style';
+import { Platform, StyleSheet } from 'react-native';
 const useChipStyle = (props) => {
     const { chipColor, textColor } = props;
-    const { ...colors } = style_1.LIGHT_COLORS;
-    const styles = (0, react_1.useMemo)(() => {
-        return react_native_1.StyleSheet.create({
+    const { ...colors } = LIGHT_COLORS;
+    const styles = useMemo(() => {
+        return StyleSheet.create({
             box: {
                 margin: 4,
                 height: 26,
-                ...react_native_1.Platform.select({
+                ...Platform.select({
                     android: {
                         elevation: 5,
                     },
@@ -59,4 +57,4 @@ const useChipStyle = (props) => {
         colors,
     };
 };
-exports.default = useChipStyle;
+export default useChipStyle;

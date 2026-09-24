@@ -5,9 +5,9 @@ interface Props {
     checkIconColor?: ColorValue;
 }
 export declare const useDropdownStyle: (props: Props) => {
-    styles: {
+    styles: Readonly<{
         mainContainer: {
-            width: "100%";
+            width: string;
         };
         mainWrap: {
             borderWidth: number;
@@ -98,16 +98,16 @@ export declare const useDropdownStyle: (props: Props) => {
             alignItems: "center";
             justifyContent: "center";
             padding: number;
-            borderColor: ColorValue;
+            borderColor: string | number | import("react-native").NativeColorValue;
         };
         iconSubContainer: {
-            width: "100%";
-            height: "100%";
+            width: string;
+            height: string;
             borderRadius: number;
-            backgroundColor: ColorValue;
+            backgroundColor: string | number | import("react-native").NativeColorValue;
         };
         styleHorizontal: {
-            width: number | "100%";
+            width: string | number;
             alignSelf: "center";
         };
         styleContainerVertical: {
@@ -122,11 +122,11 @@ export declare const useDropdownStyle: (props: Props) => {
             height: number;
             alignItems: "center";
             justifyContent: "center";
-            borderColor: ColorValue;
+            borderColor: string | number | import("react-native").NativeColorValue;
         };
         showMultiSelectContainer: {
-            width: "90%";
-            height: "auto";
+            width: string;
+            height: string;
             maxHeight: number;
         };
         wraps: {
@@ -135,7 +135,7 @@ export declare const useDropdownStyle: (props: Props) => {
             flexDirection: "row";
             paddingHorizontal: number;
         };
-    };
+    }>;
     colors: {
         blue: string;
         gray: string;

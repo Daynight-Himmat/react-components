@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.DEFAULT_COLORS = exports.THEMES = exports.DARK_COLORS = exports.LIGHT_COLORS = void 0;
-exports.LIGHT_COLORS = {
+export const LIGHT_COLORS = {
     blue: '#0000ff',
     gray: '#5c5b5b',
     error: '#dc3545',
@@ -14,7 +11,7 @@ exports.LIGHT_COLORS = {
     red: 'rgba(205, 46, 49, 1)',
     border: 'rgba(224, 224, 224, 1)',
 };
-exports.DARK_COLORS = {
+export const DARK_COLORS = {
     blue: '#0000ff',
     gray: '#5c5b5b',
     error: '#dc3545',
@@ -27,17 +24,17 @@ exports.DARK_COLORS = {
     red: 'rgba(205, 46, 49, 1)',
     border: 'rgba(224, 224, 224, 1)',
 };
-exports.THEMES = {
+export const THEMES = {
     light: {
         mode: 'light',
-        colors: exports.LIGHT_COLORS,
+        colors: LIGHT_COLORS,
     },
     dark: {
         mode: 'dark',
-        colors: exports.DARK_COLORS,
+        colors: DARK_COLORS,
     },
 };
-exports.DEFAULT_COLORS = {
+export const DEFAULT_COLORS = {
     blue: '#3683BC',
     white: '#FFFFFF',
     blackOpacity: 'rgba(0, 0, 0, 0.5)',

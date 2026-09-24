@@ -7,7 +7,7 @@ interface props {
     rightIcon?: ReactNode | ((state: PressableStateCallbackType) => ReactNode);
 }
 export declare const useAppTextInputStyle: ({ type, leftIcon, editable, }: props) => {
-    styles: {
+    styles: Readonly<{
         container: {
             flexDirection: "row";
             alignItems: "center";
@@ -21,7 +21,7 @@ export declare const useAppTextInputStyle: ({ type, leftIcon, editable, }: props
             shadowOpacity: number;
             shadowRadius: number;
             elevation: number;
-            width: "100%";
+            width: string;
         };
         margin: {
             marginBottom: number;
@@ -52,7 +52,7 @@ export declare const useAppTextInputStyle: ({ type, leftIcon, editable, }: props
         textInputStyles: {
             padding: number;
             height: number;
-            width: "100%";
+            width: string;
             color: string;
             paddingLeft: number;
             paddingRight: number;
@@ -61,7 +61,7 @@ export declare const useAppTextInputStyle: ({ type, leftIcon, editable, }: props
             position: "absolute";
             left: number;
         };
-    };
+    }>;
     colors: {
         blue: string;
         gray: string;

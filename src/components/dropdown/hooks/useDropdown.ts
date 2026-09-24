@@ -18,9 +18,9 @@ import _ from 'lodash';
 import { useDetectDevice } from './useDetectDevice';
 import { useDeviceOrientation } from './useOrientation';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../../style';
-import { DropdownProps } from '../interface/DropdownInterface';
+import { DropdownProps, SELECTIONS_TYPE } from '../interface/DropdownInterface';
 
-const useDropdown = <T, Mode extends 'single' | 'multi'>(
+const useDropdown = <T, Mode extends SELECTIONS_TYPE>(
   props: DropdownProps<T, Mode>,
 ) => {
   const {
@@ -103,7 +103,18 @@ const useDropdown = <T, Mode extends 'single' | 'multi'>(
 
   const onMeasure = useCallback(() => {
     if (ref && ref?.current) {
-      ref.current.measureInWindow((pageX, pageY, width, height) => {
+      (
+        ref?.current as unknown as {
+          measureInWindow: (
+            callback: (
+              x: number,
+              y: number,
+              width: number,
+              height: number,
+            ) => void,
+          ) => void;
+        }
+      )?.measureInWindow((pageX, pageY, width, height) => {
         let isFull = isTablet
           ? false
           : mode === 'modal' || orientation === 'LANDSCAPE';

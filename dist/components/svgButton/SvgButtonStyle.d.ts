@@ -1,5 +1,5 @@
 export declare const useSvgButtonStyle: () => {
-    styles: {
+    styles: Readonly<{
         favIcon: {
             width: number;
             right: number;
@@ -11,7 +11,7 @@ export declare const useSvgButtonStyle: () => {
             justifyContent: "center";
             backgroundColor: string;
         };
-    };
+    }>;
     colors: {
         blue: string;
         gray: string;

@@ -1,16 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useDropdownStyle = void 0;
-const style_1 = require("../../style");
-const react_1 = require("react");
-const react_native_1 = require("react-native");
-const useOrientation_1 = require("./hooks/useOrientation");
-const useDropdownStyle = (props) => {
-    const { ...colors } = style_1.LIGHT_COLORS;
-    const orientation = (0, useOrientation_1.useDeviceOrientation)();
+import { SPACING, LIGHT_COLORS, SCREEN_WIDTH, DEFAULT_COLORS, } from '../../style';
+import { useMemo } from 'react';
+import { I18nManager, StyleSheet } from 'react-native';
+import { useDeviceOrientation } from './hooks/useOrientation';
+export const useDropdownStyle = (props) => {
+    const { ...colors } = LIGHT_COLORS;
+    const orientation = useDeviceOrientation();
     const { size = 16, radioIconColor, checkIconColor } = props;
-    const styles = (0, react_1.useMemo)(() => {
-        return react_native_1.StyleSheet.create({
+    const styles = useMemo(() => {
+        return StyleSheet.create({
             mainContainer: {
                 width: '100%',
             },
@@ -49,13 +46,13 @@ const useDropdownStyle = (props) => {
                 maxHeight: 170,
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                flexDirection: react_native_1.I18nManager.isRTL ? 'row-reverse' : 'row',
+                flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
             },
             title: {
                 fontSize: 16,
                 color: colors.gray,
-                marginVertical: style_1.SPACING.s6,
-                writingDirection: react_native_1.I18nManager.isRTL ? 'rtl' : 'ltr',
+                marginVertical: SPACING.s6,
+                writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
             },
             item: {
                 padding: 17,
@@ -63,13 +60,13 @@ const useDropdownStyle = (props) => {
                 borderBottomWidth: 0.5,
                 borderColor: colors.lightGray,
                 justifyContent: 'space-between',
-                flexDirection: react_native_1.I18nManager.isRTL ? 'row-reverse' : 'row',
+                flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
             },
             textItem: {
                 flex: 1,
                 fontSize: 16,
                 color: colors.gray,
-                writingDirection: react_native_1.I18nManager.isRTL ? 'rtl' : 'ltr',
+                writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
             },
             icon: {
                 width: 20,
@@ -80,16 +77,16 @@ const useDropdownStyle = (props) => {
                 height: 45,
                 borderWidth: 0.5,
                 borderColor: '#DDDDDD',
-                marginBottom: style_1.SPACING.s8,
-                paddingHorizontal: style_1.SPACING.s8,
+                marginBottom: SPACING.s8,
+                paddingHorizontal: SPACING.s8,
             },
             fullScreen: {
                 alignItems: 'center',
                 justifyContent: 'center',
             },
             labelContainer: {
-                marginBottom: style_1.SPACING.s6,
-                paddingVertical: style_1.SPACING.s6,
+                marginBottom: SPACING.s6,
+                paddingVertical: SPACING.s6,
             },
             labelTextStyle: {
                 color: colors.gray,
@@ -112,12 +109,12 @@ const useDropdownStyle = (props) => {
                 backgroundColor: radioIconColor || colors.gray,
             },
             styleHorizontal: {
-                width: orientation === 'LANDSCAPE' ? style_1.SCREEN_WIDTH / 2 : '100%',
+                width: orientation === 'LANDSCAPE' ? SCREEN_WIDTH / 2 : '100%',
                 alignSelf: 'center',
             },
             styleContainerVertical: {
                 alignItems: 'center',
-                backgroundColor: style_1.DEFAULT_COLORS.blackOpacity,
+                backgroundColor: DEFAULT_COLORS.blackOpacity,
             },
             checkContainer: {
                 borderWidth: 2,
@@ -147,4 +144,3 @@ const useDropdownStyle = (props) => {
         colors,
     };
 };
-exports.useDropdownStyle = useDropdownStyle;

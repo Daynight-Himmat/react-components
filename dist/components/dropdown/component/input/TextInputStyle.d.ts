@@ -1,8 +1,8 @@
 export declare const useTextStyle: () => {
-    styles: {
+    styles: Readonly<{
         input: {
             height: number;
-            width: "95%";
+            width: string;
             fontSize: number;
             borderWidth: number;
             borderRadius: number;
@@ -11,11 +11,11 @@ export declare const useTextStyle: () => {
             borderColor: string;
         };
         inputContainer: {
-            width: "90%";
+            width: string;
             fontSize: number;
             color: string;
         };
-    };
+    }>;
     colors: {
         blue: string;
         gray: string;

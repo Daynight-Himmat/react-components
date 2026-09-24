@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {
   View,
   Modal,
@@ -16,8 +15,7 @@ import React, { useCallback } from 'react';
 import useDropdown from './hooks/useDropdown';
 import SvgButton from '../svgButton/SvgButton';
 import { useDropdownStyle } from './DropdownStyle';
-import CheckIcon from '../../assets/svg/CheckIcon';
-import { ArrowDown, ArrowUp } from '../../assets/svg';
+import { ArrowDown, ArrowUp, CheckIcon } from '../../assets/svg';
 import SearchInput from './component/input/TextInput';
 import { DropdownProps } from './interface/DropdownInterface';
 
@@ -47,7 +45,6 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
     maxHeight = 300,
     inverted = true,
     renderRightIcon,
-    backgroundColor,
     placeholderStyle,
     inputSearchStyle,
     searchPlaceholder,
@@ -251,19 +248,22 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
       );
     },
     [
-      font,
-      colors,
-      styles,
+      currentValue,
+      itemTestIDField,
       labelField,
+      accessibilityLabel,
+      itemAccessibilityLabelField,
+      activeColor,
+      itemContainerStyle,
       renderItem,
       valueField,
-      activeColor,
-      currentValue,
+      styles,
+      multiSelectIcon,
+      colors,
+      checkIconColor,
       itemTextStyle,
-      itemTestIDField,
-      accessibilityLabel,
-      itemContainerStyle,
-      itemAccessibilityLabelField,
+      font,
+      onCheckPress,
     ],
   );
 
@@ -307,7 +307,6 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
     },
     [
       font,
-      colors,
       styles,
       onSelect,
       labelField,
@@ -358,16 +357,17 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
     return null;
   }, [
     search,
+    renderInputSearch,
+    onChangeText,
+    onSearch,
+    setSearchText,
+    searchText,
     testID,
     colors,
     styles,
-    onSearch,
-    searchText,
-    onChangeText,
     inputSearchStyle,
-    renderInputSearch,
-    searchPlaceholder,
     accessibilityLabel,
+    searchPlaceholder,
   ]);
 
   const _renderList = useCallback(
@@ -405,16 +405,19 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
       );
     },
     [
-      styles,
-      testID,
       inverted,
-      listData,
-      scrollIndex,
+      styles,
       renderSearch,
+      refList,
+      listData,
       flatListProps,
-      renderCheckItem,
+      testID,
+      scrollIndex,
       accessibilityLabel,
       showsVerticalScrollIndicator,
+      selectionType,
+      _renderItem,
+      renderCheckItem,
     ],
   );
 
@@ -513,7 +516,6 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
     _renderList,
     keyboardHeight,
     containerStyle,
-    backgroundColor,
     dropdownPosition,
     keyboardAvoiding,
   ]);
@@ -534,7 +536,7 @@ const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
     <View style={styles.mainContainer}>
       {_renderLabel()}
       <View
-        ref={ref}
+        ref={ref as any}
         onLayout={onMeasure}
         style={StyleSheet.flatten([styles.mainWrap, style])}
       >

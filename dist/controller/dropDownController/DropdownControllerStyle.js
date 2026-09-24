@@ -1,23 +1,20 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useDropdownControllerStyle = void 0;
-const react_1 = require("react");
-const react_native_1 = require("react-native");
-const style_1 = require("../../style");
-const useDropdownControllerStyle = () => {
-    const { ...colors } = style_1.LIGHT_COLORS;
-    const styles = (0, react_1.useMemo)(() => {
-        return react_native_1.StyleSheet.create({
+import { useMemo } from 'react';
+import { StyleSheet } from 'react-native';
+import { LIGHT_COLORS, SPACING } from '../../style';
+export const useDropdownControllerStyle = () => {
+    const { ...colors } = LIGHT_COLORS;
+    const styles = useMemo(() => {
+        return StyleSheet.create({
             mainContainer: {
                 width: '100%',
-                marginBottom: style_1.SPACING?.s4,
+                marginBottom: SPACING?.s4,
             },
             dropdownContainer: {
                 borderWidth: 1,
                 borderRadius: 6,
-                marginBottom: style_1.SPACING.s10,
+                marginBottom: SPACING.s10,
                 borderColor: colors.border,
-                paddingHorizontal: style_1.SPACING.s10,
+                paddingHorizontal: SPACING.s10,
             },
             labelText: {
                 color: colors.gray,
@@ -45,4 +42,3 @@ const useDropdownControllerStyle = () => {
     }, [colors]);
     return { styles, colors };
 };
-exports.useDropdownControllerStyle = useDropdownControllerStyle;

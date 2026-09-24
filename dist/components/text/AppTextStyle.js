@@ -1,23 +1,18 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useAppTextStyle = void 0;
-const react_1 = require("react");
-const style_1 = require("../../style");
-const react_native_1 = require("react-native");
-const useAppTextStyle = ({ size, style, color, type = 'normal', }) => {
-    const { ...colors } = style_1.LIGHT_COLORS;
-    const styles = (0, react_1.useMemo)(() => {
-        return react_native_1.StyleSheet.create({
+import { useMemo } from 'react';
+import { LIGHT_COLORS } from '../../style';
+import { StyleSheet } from 'react-native';
+export const useAppTextStyle = ({ size, color, type = 'normal', }) => {
+    const { ...colors } = LIGHT_COLORS;
+    const styles = useMemo(() => {
+        return StyleSheet.create({
             container: {
                 fontSize: size || 14,
                 color: type === 'error' ? colors.error : color ? color : colors.primary,
-                ...style,
             },
             require: {
                 color: colors.error,
             },
         });
-    }, [size, colors, style, type, color]);
+    }, [size, colors, type, color]);
     return styles;
 };
-exports.useAppTextStyle = useAppTextStyle;

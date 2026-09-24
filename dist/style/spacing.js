@@ -1,11 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.SPACING = void 0;
-exports.SPACING = {
-    none: 0,
-    s1: 1,
-    s2: 2,
-    s3: 3,
+export const SPACING = {
     s4: 4,
     s6: 6,
     s8: 8,
@@ -13,14 +6,6 @@ exports.SPACING = {
     s12: 12,
     s14: 14,
     s16: 16,
-    s18: 18,
     s20: 20,
-    s22: 22,
-    s24: 24,
-    s30: 30,
-    s36: 36,
-    s40: 40,
-    s45: 45,
-    s48: 48,
-    s50: 50,
+    s45: 45
 };
