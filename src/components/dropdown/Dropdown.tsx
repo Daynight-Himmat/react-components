@@ -15,11 +15,11 @@ import React, { useCallback } from 'react';
 import useDropdown from './hooks/useDropdown';
 import SvgButton from '../svgButton/SvgButton';
 import { useDropdownStyle } from './DropdownStyle';
-import { ArrowDown, ArrowUp, CheckIcon } from '../../assets/svg';
 import SearchInput from './component/input/TextInput';
-import { DropdownProps } from './interface/DropdownInterface';
+import { ArrowDown, ArrowUp, CheckIcon } from '../../assets/svg';
+import { DropdownProps, SELECTIONS_TYPE } from './interface/DropdownInterface';
 
-const DropdownComponent = <T, Mode extends 'single' | 'multi'>(
+const DropdownComponent = <T, Mode extends SELECTIONS_TYPE>(
   props: DropdownProps<T, Mode>,
 ) => {
   const {

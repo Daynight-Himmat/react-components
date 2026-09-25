@@ -6,8 +6,8 @@ import React, { useCallback } from 'react';
 import useDropdown from './hooks/useDropdown';
 import SvgButton from '../svgButton/SvgButton';
 import { useDropdownStyle } from './DropdownStyle';
-import { ArrowDown, ArrowUp, CheckIcon } from '../../assets/svg';
 import SearchInput from './component/input/TextInput';
+import { ArrowDown, ArrowUp, CheckIcon } from '../../assets/svg';
 const DropdownComponent = (props) => {
     const { label, testID, iconStyle, renderItem, style = {}, subfixIcon, labelField, valueField, onChangeText, itemTextStyle, flatListProps, minHeight = 0, containerStyle, search = false, renderLeftIcon, checkIconColor, radioIconColor, multiSelectIcon, itemTestIDField, maxHeight = 300, inverted = true, renderRightIcon, placeholderStyle, inputSearchStyle, searchPlaceholder, selectedTextStyle, renderInputSearch, iconColor = 'gray', accessibilityLabel, itemContainerStyle, labelContainer = {}, labelTextStyle = {}, selectedTextProps = {}, chipContainerProps = {}, keyboardAvoiding = true, selectionType = 'single', activeColor = 'lightGray', dropdownPosition = 'auto', itemAccessibilityLabelField, placeholder = 'Please select', showsVerticalScrollIndicator = true, } = props;
     const { chipColor, clearIcon, textColor, onClearPress: onClear, } = chipContainerProps;

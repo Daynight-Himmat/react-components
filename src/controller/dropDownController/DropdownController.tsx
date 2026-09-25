@@ -12,7 +12,7 @@ import { Control, Controller, FieldValues, Path } from 'react-hook-form';
 interface DropControllerProps<
   U extends FieldValues,
   S,
-  T extends SELECTIONS_TYPE = 'single',
+  T extends SELECTIONS_TYPE,
 > extends DropdownProps<S, T> {
   control: Control<U>;
   controller: Path<U>;
@@ -21,7 +21,7 @@ interface DropControllerProps<
 const AppDropdownController = <
   U extends FieldValues,
   S,
-  T extends SELECTIONS_TYPE = 'single',
+  T extends SELECTIONS_TYPE,
 >(
   props: DropControllerProps<U, S, T>,
 ) => {
