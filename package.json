@@ -12,11 +12,11 @@
     "url": "https://github.com/Daynight-Himmat/react-components/issues"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc && cp -R src/assets dist/assets",
     "patch": "npm version patch",
     "prepublishOnly": "npm run build",
     "publish": "npm publish --access public",
-    "reset": "-rf dist && rm -rf node_modules && rm -rf package-lock.json && npm i --reset-cache"
+    "reset": "rm -rf dist && rm -rf node_modules && rm -rf package-lock.json && npm i --reset-cache"
   },
   "keywords": [
     "react",
