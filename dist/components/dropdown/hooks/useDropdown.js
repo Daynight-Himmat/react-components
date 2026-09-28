@@ -230,7 +230,7 @@ const useDropdown = (props) => {
     }, [setCurrentValue, valueField, onChange, currentValue]);
     const onClearPress = useCallback((item) => {
         const updated = currentValue.filter((i) => i[valueField] !== item[valueField]);
-        const val = currentValue.map((i) => i[valueField]);
+        const val = updated.map((i) => i[valueField]);
         setCurrentValue(updated);
         onChange?.(item[valueField], val);
     }, [currentValue, valueField, onChange, setCurrentValue]);

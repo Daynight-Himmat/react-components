@@ -59,6 +59,7 @@ const DropdownComponent = <T, Mode extends SELECTIONS_TYPE>(
     chipContainerProps = {},
     keyboardAvoiding = true,
     selectionType = 'single',
+    onClear: onChipClearPress,
     activeColor = 'lightGray',
     dropdownPosition = 'auto',
     itemAccessibilityLabelField,
@@ -66,12 +67,7 @@ const DropdownComponent = <T, Mode extends SELECTIONS_TYPE>(
     showsVerticalScrollIndicator = true,
   } = props;
 
-  const {
-    chipColor,
-    clearIcon,
-    textColor,
-    onClearPress: onClear,
-  } = chipContainerProps;
+  const { chipColor, clearIcon, textColor } = chipContainerProps;
 
   const { styles, colors } = useDropdownStyle({
     checkIconColor: checkIconColor,
@@ -164,8 +160,8 @@ const DropdownComponent = <T, Mode extends SELECTIONS_TYPE>(
                       key={i?.[valueField]}
                       label={i?.[labelField]}
                       onClearPress={() => {
-                        onClear?.();
                         onClearPress?.(i);
+                        onChipClearPress?.(i?.[valueField]);
                       }}
                     />
                   ))}

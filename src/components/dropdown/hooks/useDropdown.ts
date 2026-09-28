@@ -337,7 +337,7 @@ const useDropdown = <T, Mode extends SELECTIONS_TYPE>(
       const updated = currentValue.filter(
         (i: any) => i[valueField] !== item[valueField],
       );
-      const val = currentValue.map((i: any) => i[valueField]);
+      const val = updated.map((i: any) => i[valueField]);
       setCurrentValue(updated);
       onChange?.(item[valueField] as keyof T, val);
     },
