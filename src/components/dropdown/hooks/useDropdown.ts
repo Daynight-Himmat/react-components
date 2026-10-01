@@ -14,7 +14,6 @@ import {
   I18nManager,
   KeyboardEvent,
 } from 'react-native';
-import _ from 'lodash';
 import { useDetectDevice } from './useDetectDevice';
 import { useDeviceOrientation } from './useOrientation';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../../style';
@@ -181,10 +180,12 @@ const useDropdown = <T, Mode extends SELECTIONS_TYPE>(
       return;
     } else {
       const defaultValue =
-        typeof value === 'object' ? _.get(value, valueField) : value;
+        typeof value === 'object'
+          ? valueField && value?.[valueField as any]
+          : value;
 
-      const getItem = data.filter(e =>
-        _.isEqual(defaultValue, _.get(e, valueField)),
+      const getItem = data.filter(
+        e => JSON.stringify(defaultValue) === JSON.stringify(e?.[valueField]),
       );
       if (getItem.length > 0) {
         setCurrentValue(getItem[0]);
@@ -201,10 +202,11 @@ const useDropdown = <T, Mode extends SELECTIONS_TYPE>(
       setTimeout(() => {
         if (refList && refList?.current) {
           const defaultValue =
-            typeof value === 'object' ? _.get(value, valueField) : value;
+            typeof value === 'object' ? (value as T)?.[valueField] : value;
 
-          const index = _.findIndex(listData, (e: any) =>
-            _.isEqual(defaultValue, _.get(e, valueField)),
+          const index = listData.findIndex(
+            (e: any) =>
+              JSON.stringify(defaultValue) === JSON.stringify(e?.[valueField]),
           );
           if (index > -1 && index <= listData.length - 1) {
             refList?.current?.scrollToIndex({
@@ -256,11 +258,13 @@ const useDropdown = <T, Mode extends SELECTIONS_TYPE>(
     (text: string) => {
       if (text.length > 0) {
         const defaultFilterFunction = (e: any) => {
-          const item = _.get(e, searchField || labelField)
-            ?.toLowerCase()
-            .replace(' ', '')
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '');
+          const item =
+            e?.[searchField] ||
+            e?.[labelField]
+              ?.toLowerCase()
+              .replace(' ', '')
+              .normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '');
           const key = text
             .toLowerCase()
             .replace(' ', '')
@@ -271,7 +275,7 @@ const useDropdown = <T, Mode extends SELECTIONS_TYPE>(
         };
 
         const propSearchFunction = (e: any) => {
-          const labelText = _.get(e, searchField || labelField);
+          const labelText = e?.[searchField] || e?.[labelField];
 
           return searchQuery?.(text, labelText);
         };
@@ -319,7 +323,7 @@ const useDropdown = <T, Mode extends SELECTIONS_TYPE>(
           (i: any) => i[valueField] === item[valueField],
         );
         const va: T[] = exists
-          ? _.filter(prev, i => i?.[valueField] !== item?.[valueField])
+          ? prev?.filter?.(i => i?.[valueField] !== item?.[valueField])
           : [...prev, item];
         const v = va?.map(i => i[valueField]);
         onChange?.(

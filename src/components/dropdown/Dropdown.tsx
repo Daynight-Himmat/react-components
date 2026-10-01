@@ -8,7 +8,6 @@ import {
   TouchableHighlight,
   TouchableWithoutFeedback,
 } from 'react-native';
-import _ from 'lodash';
 import AppText from '../text/AppText';
 import Chip from './component/chip/Chip';
 import React, { useCallback } from 'react';
@@ -118,7 +117,7 @@ const DropdownComponent = <T, Mode extends SELECTIONS_TYPE>(
   };
 
   const _renderDropdown = () => {
-    const isSelected: boolean = currentValue && _.get(currentValue, valueField);
+    const isSelected: boolean = currentValue && currentValue?.[valueField];
     return (
       <TouchableWithoutFeedback
         testID={testID}
@@ -137,9 +136,7 @@ const DropdownComponent = <T, Mode extends SELECTIONS_TYPE>(
               ]}
               {...selectedTextProps}
             >
-              {isSelected !== null
-                ? _.get(currentValue, labelField)
-                : placeholder}
+              {isSelected !== null ? currentValue?.[labelField] : placeholder}
             </AppText>
           ) : currentValue?.length === 0 ? (
             <AppText
@@ -188,18 +185,21 @@ const DropdownComponent = <T, Mode extends SELECTIONS_TYPE>(
 
   const renderCheckItem = useCallback(
     ({ item, index }: { item: T; index: number }) => {
-      const isSelected = _.some(currentValue, (h: any) =>
-        _.isEqual(_.get(h, valueField), _.get(item, valueField)),
+      const isSelected = currentValue.some(
+        (h: any) => h?.[valueField] === item?.[valueField],
       );
+
       return (
         <TouchableHighlight
           key={index.toString()}
-          testID={_.get(item, itemTestIDField || labelField)}
-          accessible={!!accessibilityLabel}
-          accessibilityLabel={_.get(
-            item,
-            itemAccessibilityLabelField || labelField,
+          testID={String(
+            item?.[itemTestIDField as keyof T] || item?.[labelField],
           )}
+          accessible={!!accessibilityLabel}
+          accessibilityLabel={
+            (item?.[itemAccessibilityLabelField as keyof T] ||
+              item?.[labelField]) as string | undefined
+          }
           underlayColor={activeColor}
           onPress={() => onCheckPress(item)}
         >
@@ -235,7 +235,7 @@ const DropdownComponent = <T, Mode extends SELECTIONS_TYPE>(
                     font(),
                   ])}
                 >
-                  {_.get(item, labelField)}
+                  {String(item?.[labelField])}
                 </AppText>
               </View>
             )}
@@ -265,18 +265,20 @@ const DropdownComponent = <T, Mode extends SELECTIONS_TYPE>(
 
   const _renderItem = useCallback(
     ({ item, index }: { item: T; index: number }) => {
-      const isSelected = currentValue && _.get(currentValue, valueField);
-      const selected = _.isEqual(_.get(item, valueField), isSelected);
-      _.assign(item, { _index: index });
+      const isSelected = currentValue && currentValue?.[valueField];
+      const selected = item?.[valueField] === isSelected;
+      Object.assign(item as object, { _index: index });
       return (
         <TouchableHighlight
           key={index.toString()}
-          testID={_.get(item, itemTestIDField || labelField)}
-          accessible={!!accessibilityLabel}
-          accessibilityLabel={_.get(
-            item,
-            itemAccessibilityLabelField || labelField,
+          testID={String(
+            item?.[itemTestIDField as keyof T] || item?.[labelField],
           )}
+          accessible={!!accessibilityLabel}
+          accessibilityLabel={
+            (item?.[itemAccessibilityLabelField as keyof T] ||
+              item?.[labelField]) as string | undefined
+          }
           underlayColor={activeColor}
           onPress={() => onSelect(item)}
         >
@@ -293,7 +295,7 @@ const DropdownComponent = <T, Mode extends SELECTIONS_TYPE>(
                     font(),
                   ])}
                 >
-                  {_.get(item, labelField)}
+                  {String(item?.[labelField])}
                 </AppText>
               </View>
             )}

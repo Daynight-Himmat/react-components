@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRef, useState, useEffect, useCallback, useImperativeHandle, } from 'react';
 import { Keyboard, StatusBar, I18nManager, } from 'react-native';
-import _ from 'lodash';
 import { useDetectDevice } from './useDetectDevice';
 import { useDeviceOrientation } from './useOrientation';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../../style';
@@ -110,8 +109,10 @@ const useDropdown = (props) => {
             return;
         }
         else {
-            const defaultValue = typeof value === 'object' ? _.get(value, valueField) : value;
-            const getItem = data.filter(e => _.isEqual(defaultValue, _.get(e, valueField)));
+            const defaultValue = typeof value === 'object'
+                ? valueField && value?.[valueField]
+                : value;
+            const getItem = data.filter(e => JSON.stringify(defaultValue) === JSON.stringify(e?.[valueField]));
             if (getItem.length > 0) {
                 setCurrentValue(getItem[0]);
             }
@@ -125,8 +126,8 @@ const useDropdown = (props) => {
         if (autoScroll && data.length > 0 && listData.length === data.length) {
             setTimeout(() => {
                 if (refList && refList?.current) {
-                    const defaultValue = typeof value === 'object' ? _.get(value, valueField) : value;
-                    const index = _.findIndex(listData, (e) => _.isEqual(defaultValue, _.get(e, valueField)));
+                    const defaultValue = typeof value === 'object' ? value?.[valueField] : value;
+                    const index = listData.findIndex((e) => JSON.stringify(defaultValue) === JSON.stringify(e?.[valueField]));
                     if (index > -1 && index <= listData.length - 1) {
                         refList?.current?.scrollToIndex({
                             index: index,
@@ -174,11 +175,12 @@ const useDropdown = (props) => {
     const onSearch = useCallback((text) => {
         if (text.length > 0) {
             const defaultFilterFunction = (e) => {
-                const item = _.get(e, searchField || labelField)
-                    ?.toLowerCase()
-                    .replace(' ', '')
-                    .normalize('NFD')
-                    .replace(/[\u0300-\u036f]/g, '');
+                const item = e?.[searchField] ||
+                    e?.[labelField]
+                        ?.toLowerCase()
+                        .replace(' ', '')
+                        .normalize('NFD')
+                        .replace(/[\u0300-\u036f]/g, '');
                 const key = text
                     .toLowerCase()
                     .replace(' ', '')
@@ -187,7 +189,7 @@ const useDropdown = (props) => {
                 return item.indexOf(key) >= 0;
             };
             const propSearchFunction = (e) => {
-                const labelText = _.get(e, searchField || labelField);
+                const labelText = e?.[searchField] || e?.[labelField];
                 return searchQuery?.(text, labelText);
             };
             const dataSearch = data.filter(searchQuery ? propSearchFunction : defaultFilterFunction);
@@ -221,7 +223,7 @@ const useDropdown = (props) => {
         setCurrentValue?.((prev) => {
             const exists = prev?.some?.((i) => i[valueField] === item[valueField]);
             const va = exists
-                ? _.filter(prev, i => i?.[valueField] !== item?.[valueField])
+                ? prev?.filter?.(i => i?.[valueField] !== item?.[valueField])
                 : [...prev, item];
             const v = va?.map(i => i[valueField]);
             onChange?.(item[valueField], selectionType === 'multi' ? v : item[valueField]);

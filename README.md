@@ -113,15 +113,13 @@ export default function FormScreen() {
     <DropdownController
       control={control}
       controller="fruit"
-      dropProps={{
-        data: [
+      data={[
           { id: 1, label: "Apple" },
           { id: 2, label: "Banana" },
-        ],
-        labelField: "label",
-        valueField: "id",
-        placeholder: "Pick a fruit",
-      }}
+        ]}
+      labelField="label"
+      valueField= "id"
+      placeholder= "Pick a fruit"
     />
   );
 }
@@ -136,8 +134,7 @@ export default function FormScreen() {
 | control       | Control     | React Hook Form control object                |
 | controller    | string      | Field name in the form                        |
 | rules         | object      | Validation rules (optional)                   |
-| dropProps     | object      | All dropdown props                            |
-| defaultValue  | any         | Initial/default value                         |
+| ...dropProps  | object      | All dropdown props                            |
 
 ---
 

@@ -1,5 +1,4 @@
 import { View, Modal, FlatList, StyleSheet, ScrollView, TouchableHighlight, TouchableWithoutFeedback, } from 'react-native';
-import _ from 'lodash';
 import AppText from '../text/AppText';
 import Chip from './component/chip/Chip';
 import React, { useCallback } from 'react';
@@ -24,7 +23,7 @@ const DropdownComponent = (props) => {
             ])}/>);
     };
     const _renderDropdown = () => {
-        const isSelected = currentValue && _.get(currentValue, valueField);
+        const isSelected = currentValue && currentValue?.[valueField];
         return (<TouchableWithoutFeedback testID={testID} accessible={!!accessibilityLabel} accessibilityLabel={accessibilityLabel} onPress={() => (selectionType === 'single' ? showOrClose() : null)}>
         <View style={styles.dropdown}>
           {renderLeftIcon?.(visible)}
@@ -33,9 +32,7 @@ const DropdownComponent = (props) => {
                     isSelected !== null ? selectedTextStyle : placeholderStyle,
                     font(),
                 ]} {...selectedTextProps}>
-              {isSelected !== null
-                    ? _.get(currentValue, labelField)
-                    : placeholder}
+              {isSelected !== null ? currentValue?.[labelField] : placeholder}
             </AppText>) : currentValue?.length === 0 ? (<AppText style={[styles.textItem, placeholderStyle, font()]} {...selectedTextProps}>
               {placeholder}
             </AppText>) : (<View style={styles.showMultiSelectContainer}>
@@ -58,8 +55,9 @@ const DropdownComponent = (props) => {
         </View>);
     }, [styles]);
     const renderCheckItem = useCallback(({ item, index }) => {
-        const isSelected = _.some(currentValue, (h) => _.isEqual(_.get(h, valueField), _.get(item, valueField)));
-        return (<TouchableHighlight key={index.toString()} testID={_.get(item, itemTestIDField || labelField)} accessible={!!accessibilityLabel} accessibilityLabel={_.get(item, itemAccessibilityLabelField || labelField)} underlayColor={activeColor} onPress={() => onCheckPress(item)}>
+        const isSelected = currentValue.some((h) => h?.[valueField] === item?.[valueField]);
+        return (<TouchableHighlight key={index.toString()} testID={String(item?.[itemTestIDField] || item?.[labelField])} accessible={!!accessibilityLabel} accessibilityLabel={(item?.[itemAccessibilityLabelField] ||
+                item?.[labelField])} underlayColor={activeColor} onPress={() => onCheckPress(item)}>
           <View style={StyleSheet.flatten([itemContainerStyle])}>
             {renderItem ? (renderItem(item, isSelected, labelField, valueField)) : (<View style={styles.item}>
                 <SvgButton icon={multiSelectIcon ? (multiSelectIcon) : (<CheckIcon color={colors.white}/>)} onPress={() => onCheckPress(item)} style={[
@@ -77,7 +75,7 @@ const DropdownComponent = (props) => {
                     itemTextStyle,
                     font(),
                 ])}>
-                  {_.get(item, labelField)}
+                  {String(item?.[labelField])}
                 </AppText>
               </View>)}
           </View>
@@ -101,10 +99,11 @@ const DropdownComponent = (props) => {
         onCheckPress,
     ]);
     const _renderItem = useCallback(({ item, index }) => {
-        const isSelected = currentValue && _.get(currentValue, valueField);
-        const selected = _.isEqual(_.get(item, valueField), isSelected);
-        _.assign(item, { _index: index });
-        return (<TouchableHighlight key={index.toString()} testID={_.get(item, itemTestIDField || labelField)} accessible={!!accessibilityLabel} accessibilityLabel={_.get(item, itemAccessibilityLabelField || labelField)} underlayColor={activeColor} onPress={() => onSelect(item)}>
+        const isSelected = currentValue && currentValue?.[valueField];
+        const selected = item?.[valueField] === isSelected;
+        Object.assign(item, { _index: index });
+        return (<TouchableHighlight key={index.toString()} testID={String(item?.[itemTestIDField] || item?.[labelField])} accessible={!!accessibilityLabel} accessibilityLabel={(item?.[itemAccessibilityLabelField] ||
+                item?.[labelField])} underlayColor={activeColor} onPress={() => onSelect(item)}>
           <View style={StyleSheet.flatten([itemContainerStyle])}>
             {renderItem ? (renderItem(item, selected, labelField, valueField)) : (<View style={styles.item}>
                 {renderRadio(selected)}
@@ -113,7 +112,7 @@ const DropdownComponent = (props) => {
                     itemTextStyle,
                     font(),
                 ])}>
-                  {_.get(item, labelField)}
+                  {String(item?.[labelField])}
                 </AppText>
               </View>)}
           </View>
